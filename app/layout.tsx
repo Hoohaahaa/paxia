@@ -5,6 +5,7 @@ import { fontDisplay, fontUI, fontMono } from './fonts'
 import { Grain } from '@/components/grain/Grain'
 import { Rail } from '@/components/rail/Rail'
 import { RailMobile } from '@/components/rail/RailMobile'
+import { Footer } from '@/components/footer/Footer'
 
 export const metadata: Metadata = {
   title: {
@@ -44,7 +45,10 @@ export default function RootLayout({
         <Rail />
         <RailMobile />
 
-        <div className="pt-rail-h md:pl-rail md:pt-0">{children}</div>
+        <div className="pt-rail-h md:pl-rail md:pt-0">
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   )

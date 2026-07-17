@@ -4,21 +4,22 @@
 > This is the only file that changes constantly. Everything else is a contract.
 
 **Updated:** 2026-07-17
-**Phase:** 1 — Build (Slice 01 shipped)
+**Phase:** 1 — Build (Slices 01–02 shipped)
 
 ---
 
 ## Now
 
-**Slice 01 — the Shell is built and passing.** Scaffold, Rail (desktop + mobile bone
-MenuPanel), Frame primitive, Ecosystem Strip, Arrival + SectionIndex + ambient drift, and
-Grain are in place. `pnpm check` is green (tsc + eslint + token-lint), production build
-succeeds, and axe reports 0 WCAG 2 A/AA violations on desktop, mobile, and with the menu
-open. The token system held: it needed only three additive values under real load
-(`--rail-h`, `--tap`, `--u-wordmark-track`), no structural change.
+**Slices 01 and 02 are built and passing.** The full homepage composition (docs/02 §3) is
+live: Arrival → Ecosystem Strip → Manifesto → Campaign → Craft → Presence → Journal → Footer,
+on the shell (Rail + mobile bone MenuPanel, Grain). `pnpm check` is green, the production
+build succeeds (First Load JS 116 kB < 120 kB), and axe reports **0 WCAG 2 A/AA violations**
+on desktop and mobile. The token system still needed no structural change across the whole
+homepage — only the one accessibility correction logged below.
 
-Immediate task: **Slice 02 — Homepage.** Manifesto, Campaign, Craft, Presence, Journal,
-Footer — composed below the existing shell on `app/page.tsx`.
+Immediate task: **Slice 03 — Collections + Product.** The first route beyond home; the
+Product page order is fixed (docs/02 §5): Emotion → Object → Material → Craft → Info →
+Purchase → Related.
 
 ---
 
@@ -45,12 +46,20 @@ Footer — composed below the existing shell on `app/page.tsx`.
   - [~] Armenian subset — deferred (Open Decision 4; free fallbacks offer no Armenian face)
   - [~] Lighthouse ≥ 95 — build is static, First Load JS 115 kB < 120 kB budget; full
         Lighthouse run pending a hosted deploy
+- [x] **Slice 02 — Homepage**
+  - [x] Manifesto — one --d-2 statement, offset column 3, --sect-hero of space, single settle
+  - [x] Campaign — the single full-bleed reveal, --d-3 line over --scrim-bottom, no CTA
+  - [x] Craft — asymmetric 7/12 image + 4/12 text, macro texture not a garment
+  - [x] Presence — city band, hover/focus crossfades the store image behind at --scrim-full
+  - [x] Journal — three articles, editorial ratio, mono date + --d-1 title, no excerpt
+  - [x] Footer — site-wide, --surface-rail, four IA columns + legal
+  - [x] axe 0 violations (desktop + mobile); First Load JS 116 kB < 120 kB
 
 ---
 
 ## Next
 
-**Slice 02 — Homepage** — Manifesto, Campaign, Craft, Presence, Journal, Footer
+**Slice 03 — Collections + Product**
 **Slice 03 — Collections + Product**
 **Slice 04 — Bespoke + Store**
 **Slice 05 — Agency + Journal**
@@ -131,6 +140,22 @@ before — keeps the route bundle at 115 kB and server-first.
 **2026-07-17 — SVG placeholder art.** Six frames + hero are token-toned SVGs in `/public`,
 served via `next/image` (`dangerouslyAllowSVG` scoped to our own static assets). Every layout
 is built to survive replacement by real photography, per `05_QUALITY.md`.
+
+**2026-07-17 — Footer nano text uses `--text-muted`, not `--text-metadata`.** §3.8 specifies
+metadata for the footer legal, but metadata is a 4.69:1 floor legal only at ≥14px on void
+(`01_TOKENS` §1.9); at `--u-nano` (11px) on the lighter `--surface-rail` ground it fails AA,
+and axe confirmed it. Accessibility outranks visual expression in the decision hierarchy, so
+the footer takes the higher-contrast ink. The on-void nano metadata (SectionIndex, Frame
+meta, Journal dates) stays — it clears AA at 4.69:1 there.
+
+**2026-07-17 — JournalPreview is not a Frame.** The homepage Journal teaser (§3.7) puts the
+title *below* the image on void, with no eyebrow/scrim/CTA — a different register from the
+Frame primitive (label-inside, scrim, CTA). Extending Frame would have fought its anatomy, so
+the teaser is its own small component. Frame.Journal remains for the Journal index later.
+
+**2026-07-17 — Two full-bleed 100vh sections on home, by design.** Arrival (§3.1) and Campaign
+(§3.4) are both full-bleed. The "once per session" guard (§7) is against *gratuitous* extra
+campaigns; the canonical composition names exactly these two. No third was added.
 
 ---
 
