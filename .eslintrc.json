@@ -1,0 +1,21 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "overrides": [
+    {
+      "files": ["components/**/*.{ts,tsx}", "features/**/*.{ts,tsx}"],
+      "rules": {
+        "no-restricted-syntax": [
+          "error",
+          {
+            "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+            "message": "Raw hex color is banned in components/features. Use a token from docs/01_TOKENS.md."
+          },
+          {
+            "selector": "Literal[value=/cubic-bezier/]",
+            "message": "Raw cubic-bezier is banned. Use a motion easing token (--e-*)."
+          }
+        ]
+      }
+    }
+  ]
+}

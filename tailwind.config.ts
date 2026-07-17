@@ -49,6 +49,8 @@ const config: Config = {
       13: 'var(--s-13)',
       seam: 'var(--seam)',
       rail: 'var(--rail-w)',
+      'rail-h': 'var(--rail-h)',
+      tap: 'var(--tap)',
       'sect-tight': 'var(--sect-tight)', 'sect-normal': 'var(--sect-normal)',
       'sect-wide': 'var(--sect-wide)', 'sect-hero': 'var(--sect-hero)',
     },

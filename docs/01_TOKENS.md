@@ -167,12 +167,17 @@ speaking. Its uppercase tracks beautifully at small sizes, which our nav depends
 *Free fallback:* **JetBrains Mono**.
 
 ```
---font-display  'Ogg', 'Editorial New', 'Playfair Display', Georgia, serif;
---font-ui       'Söhne', 'Inter', system-ui, sans-serif;
---font-mono     'Söhne Mono', 'JetBrains Mono', monospace;
+--font-display  'Ogg', 'Editorial New', var(--font-loaded-display, 'Playfair Display'), Georgia, serif;
+--font-ui       'Söhne', var(--font-loaded-ui, 'Inter'), system-ui, sans-serif;
+--font-mono     'Söhne Mono', var(--font-loaded-mono, 'JetBrains Mono'), monospace;
 ```
 
 Two families. A third is a failure of nerve.
+
+`--font-loaded-*` is injected at runtime by `next/font` (self-hosted, subset,
+`font-display: swap`). Until the Ogg/Söhne licenses land it carries the free
+fallback; after, the licensed name ahead of it wins with no other change. This
+is the one-line swap `PROJECT_STATE.md` promised — the token file is the seam.
 
 ## 2.2 Display Scale
 
@@ -202,6 +207,10 @@ Display is always `font-weight: 400`. If a headline needs bold to work, the head
 --u-lead   1.0625rem  lh 1.60  tracking -0.004em            standfirst, hero sub
 --u-quote  1.25rem    lh 1.50  tracking -0.008em            pull quotes
 ```
+
+One tracking value lives outside this scale: `--u-wordmark-track` (0.36em),
+used **only** for the rail wordmark, so the mark reads as an identity rather
+than a nav label. Do not reach for it anywhere else.
 
 Uppercase tracking is non-negotiable. Uppercase set at default tracking is the single most
 common tell of an amateur luxury site.
@@ -284,6 +293,7 @@ horizontal top-nav can never deliver.
 ```
 --rail-w        clamp(140px, 11vw, 184px)
 --rail-w-lg     216px    ≥ --bp-2xl
+--rail-h        56px     collapsed mobile bar height (< --bp-md)
 --rail-bg       var(--surface-rail)
 --rail-edge     var(--line-hairline)   1px right edge, always
 ```
@@ -303,6 +313,7 @@ Content area = viewport − rail.
 --gutter        var(--s-5)    24px
 --margin-x      clamp(var(--s-6), 4vw, var(--s-9))
 --content-max   1680px
+--tap           44px          minimum touch target (05_QUALITY §1)
 ```
 
 Grid is structural and invisible. Never rendered.

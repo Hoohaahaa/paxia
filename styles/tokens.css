@@ -58,9 +58,19 @@
   --focus-offset: 2px;
 
   /* ─── Type families ──────────────────────────────────────────── */
-  --font-display: 'Ogg', 'Editorial New', 'Playfair Display', Georgia, serif;
-  --font-ui: 'Söhne', 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'Söhne Mono', 'JetBrains Mono', ui-monospace, monospace;
+  /* --font-loaded-* is injected at runtime by next/font (see app/fonts.ts):
+   * it resolves to the self-hosted free fallback until Ogg/Söhne licenses
+   * land, at which point the licensed names ahead of it win. The --font-*-fb
+   * literal is the graceful default if the loaded var is ever absent. */
+  --font-display-fb: 'Playfair Display';
+  --font-ui-fb: 'Inter';
+  --font-mono-fb: 'JetBrains Mono';
+  --font-display: 'Ogg', 'Editorial New',
+    var(--font-loaded-display, var(--font-display-fb)), Georgia, serif;
+  --font-ui: 'Söhne', var(--font-loaded-ui, var(--font-ui-fb)), system-ui,
+    -apple-system, sans-serif;
+  --font-mono: 'Söhne Mono', var(--font-loaded-mono, var(--font-mono-fb)),
+    ui-monospace, monospace;
 
   /* ─── Display scale ──────────────────────────────────────────── */
   --d-1-size: clamp(2rem, 1.6rem + 1.6vw, 2.75rem);
@@ -108,6 +118,10 @@
   --u-quote-lh: 1.50;
   --u-quote-track: -0.008em;
 
+  /* Rail wordmark only — the one place tracking opens past the UI scale,
+   * so the mark reads as an identity, not a nav label (docs/02 §2). */
+  --u-wordmark-track: 0.36em;
+
   --measure-body: 66ch;
   --measure-lead: 52ch;
 
@@ -135,12 +149,14 @@
 
   /* ─── Layout ─────────────────────────────────────────────────── */
   --rail-w: clamp(140px, 11vw, 184px);
+  --rail-h: 56px; /* collapsed mobile bar (docs/02_LAYOUT_IA.md §2, §4.2) */
   --rail-bg: var(--surface-rail);
   --rail-edge: var(--line-hairline);
 
   --gutter: var(--s-5);
   --margin-x: clamp(var(--s-6), 4vw, var(--s-9));
   --content-max: 1680px;
+  --tap: 44px; /* minimum touch target (docs/05_QUALITY.md §1) */
 
   --strip-h: clamp(320px, 34vh, 420px);
   --strip-ratio: 3 / 4;
