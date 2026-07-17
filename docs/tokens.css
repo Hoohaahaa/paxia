@@ -1,0 +1,226 @@
+/* PAXIA — Design Tokens
+ * Generated from docs/01_TOKENS.md. That document is the source of truth.
+ * Do not add a value here without adding it there first.
+ */
+
+:root {
+  /* ─── Ink ramp — warm near-black to bone ─────────────────────── */
+  --ink-950: oklch(0.13 0.004 65);
+  --ink-900: oklch(0.17 0.005 65);
+  --ink-850: oklch(0.21 0.006 62);
+  --ink-800: oklch(0.26 0.008 60);
+  --ink-700: oklch(0.34 0.009 58);
+  --ink-600: oklch(0.45 0.010 58);
+  --ink-550: oklch(0.58 0.010 60);
+  --ink-400: oklch(0.66 0.011 62);
+  --ink-300: oklch(0.76 0.010 66);
+  --ink-200: oklch(0.85 0.008 70);
+  --ink-100: oklch(0.91 0.007 72);
+  --ink-050: oklch(0.955 0.006 74);
+  --ink-000: oklch(0.98 0.005 76);
+
+  /* ─── Surfaces ───────────────────────────────────────────────── */
+  --surface-void: var(--ink-950);
+  --surface-rail: var(--ink-900);
+  --surface-raised: var(--ink-850);
+  --surface-frame: var(--ink-800);
+  --surface-inverse: var(--ink-000);
+  --surface-scrim: oklch(0.13 0.004 65 / 0.62);
+  --surface-scrim-soft: oklch(0.13 0.004 65 / 0.34);
+
+  /* ─── Text ───────────────────────────────────────────────────── */
+  --text-primary: var(--ink-000);
+  --text-secondary: var(--ink-200);
+  --text-muted: var(--ink-400);
+  --text-metadata: var(--ink-550);
+  --text-on-bone: var(--ink-900);
+  --text-on-bone-muted: var(--ink-600);
+
+  /* ─── Line ───────────────────────────────────────────────────── */
+  --line-hairline: oklch(0.98 0.005 76 / 0.10);
+  --line-strong: oklch(0.98 0.005 76 / 0.22);
+  --line-on-bone: oklch(0.13 0.004 65 / 0.14);
+
+  /* ─── Patina — the only accent ───────────────────────────────── */
+  --patina-600: oklch(0.52 0.062 78);
+  --patina-500: oklch(0.60 0.070 80);
+  --patina-400: oklch(0.74 0.068 82);
+  --patina-300: oklch(0.83 0.052 84);
+
+  /* ─── Functional ─────────────────────────────────────────────── */
+  --ok: oklch(0.62 0.055 150);
+  --warn: oklch(0.72 0.075 75);
+  --err: oklch(0.58 0.095 25);
+  --info: oklch(0.64 0.045 240);
+
+  /* ─── Focus ──────────────────────────────────────────────────── */
+  --focus-ring: 0 0 0 1px var(--surface-void), 0 0 0 3px var(--patina-500);
+  --focus-offset: 2px;
+
+  /* ─── Type families ──────────────────────────────────────────── */
+  --font-display: 'Ogg', 'Editorial New', 'Playfair Display', Georgia, serif;
+  --font-ui: 'Söhne', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Söhne Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+  /* ─── Display scale ──────────────────────────────────────────── */
+  --d-1-size: clamp(2rem, 1.6rem + 1.6vw, 2.75rem);
+  --d-1-lh: 1.10;
+  --d-1-track: -0.010em;
+
+  --d-2-size: clamp(2.75rem, 2.1rem + 2.6vw, 4rem);
+  --d-2-lh: 1.06;
+  --d-2-track: -0.014em;
+
+  --d-3-size: clamp(3.75rem, 2.6rem + 4.4vw, 6rem);
+  --d-3-lh: 1.02;
+  --d-3-track: -0.018em;
+
+  --d-4-size: clamp(5rem, 3rem + 7.4vw, 9rem);
+  --d-4-lh: 0.96;
+  --d-4-track: -0.024em;
+
+  --d-5-size: clamp(6.5rem, 3.2rem + 12vw, 13.5rem);
+  --d-5-lh: 0.92;
+  --d-5-track: -0.030em;
+
+  /* ─── UI scale ───────────────────────────────────────────────── */
+  --u-nano-size: 0.6875rem;
+  --u-nano-lh: 1.30;
+  --u-nano-track: 0.16em;
+
+  --u-micro-size: 0.75rem;
+  --u-micro-lh: 1.40;
+  --u-micro-track: 0.14em;
+
+  --u-small-size: 0.8125rem;
+  --u-small-lh: 1.55;
+  --u-small-track: 0.02em;
+
+  --u-base-size: 0.9375rem;
+  --u-base-lh: 1.65;
+  --u-base-track: 0em;
+
+  --u-lead-size: 1.0625rem;
+  --u-lead-lh: 1.60;
+  --u-lead-track: -0.004em;
+
+  --u-quote-size: 1.25rem;
+  --u-quote-lh: 1.50;
+  --u-quote-track: -0.008em;
+
+  --measure-body: 66ch;
+  --measure-lead: 52ch;
+
+  /* ─── Space ──────────────────────────────────────────────────── */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+  --s-11: 192px;
+  --s-12: 256px;
+  --s-13: 384px;
+
+  --sect-tight: var(--s-9);
+  --sect-normal: var(--s-11);
+  --sect-wide: var(--s-12);
+  --sect-hero: var(--s-13);
+
+  --seam: 1px;
+
+  /* ─── Layout ─────────────────────────────────────────────────── */
+  --rail-w: clamp(140px, 11vw, 184px);
+  --rail-bg: var(--surface-rail);
+  --rail-edge: var(--line-hairline);
+
+  --gutter: var(--s-5);
+  --margin-x: clamp(var(--s-6), 4vw, var(--s-9));
+  --content-max: 1680px;
+
+  --strip-h: clamp(320px, 34vh, 420px);
+  --strip-ratio: 3 / 4;
+
+  /* ─── Z ──────────────────────────────────────────────────────── */
+  --z-atmosphere: 0;
+  --z-content: 10;
+  --z-frame: 20;
+  --z-rail: 50;
+  --z-overlay: 80;
+  --z-modal: 90;
+  --z-toast: 95;
+
+  /* ─── Duration ───────────────────────────────────────────────── */
+  --t-instant: 80ms;
+  --t-fast: 160ms;
+  --t-normal: 260ms;
+  --t-medium: 420ms;
+  --t-slow: 650ms;
+  --t-hero: 1100ms;
+  --t-ambient: 8000ms;
+
+  /* ─── Easing ─────────────────────────────────────────────────── */
+  --e-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --e-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --e-heavy: cubic-bezier(0.16, 0.84, 0.24, 1);
+  --e-linear: linear;
+
+  /* ─── Reveal ─────────────────────────────────────────────────── */
+  --reveal-near: 12px;
+  --reveal-mid: 24px;
+  --reveal-far: 40px;
+  --reveal-stagger: 60ms;
+
+  /* ─── Material ───────────────────────────────────────────────── */
+  --lift-none: none;
+  --lift-frame: inset 0 0 0 1px oklch(0.98 0.005 76 / 0.05);
+  --lift-modal: 0 40px 120px -20px oklch(0.13 0.004 65 / 0.72);
+
+  --r-none: 0px;
+  --r-soft: 2px;
+  --r-full: 9999px;
+
+  --scrim-bottom: linear-gradient(
+    to top,
+    oklch(0.13 0.004 65 / 0.88) 0%,
+    oklch(0.13 0.004 65 / 0) 62%
+  );
+  --scrim-full: oklch(0.13 0.004 65 / 0.42);
+  --scrim-rail: linear-gradient(
+    to right,
+    oklch(0.13 0.004 65 / 0.55) 0%,
+    oklch(0.13 0.004 65 / 0) 100%
+  );
+
+  --grain-opacity: 0.028;
+  --grain-size: 180px;
+
+  /* ─── Image ratios ───────────────────────────────────────────── */
+  --img-ratio-portrait: 3 / 4;
+  --img-ratio-editorial: 4 / 5;
+  --img-ratio-campaign: 16 / 9;
+  --img-ratio-square: 1 / 1;
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --rail-w: 216px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --reveal-near: 0px;
+    --reveal-mid: 0px;
+    --reveal-far: 0px;
+    --reveal-stagger: 0ms;
+    --t-medium: var(--t-normal);
+    --t-slow: var(--t-normal);
+    --t-hero: var(--t-normal);
+    --t-ambient: 0ms;
+  }
+}
