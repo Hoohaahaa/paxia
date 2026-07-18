@@ -1,3 +1,4 @@
+import { TextReveal } from '@/components/reveal/TextReveal'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -22,9 +23,9 @@ export default function StorePage() {
     <main id="main" className="px-[var(--margin-x)] py-sect-normal">
       <header className="max-w-content">
         <p className="text-micro uppercase text-text-muted">Store</p>
-        <h1 className="mt-5 font-display text-d-3 text-text-primary">
+        <TextReveal as="h1" className="mt-5 font-display text-d-3 text-text-primary">
           Five Cities
-        </h1>
+        </TextReveal>
         <p className="mt-6 max-w-lead text-lead text-text-secondary">
           Each store is a room of the same house — built with local stone and
           the same light. Visit any of them and you have visited all of them.

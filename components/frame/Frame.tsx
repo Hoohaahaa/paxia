@@ -84,6 +84,12 @@ export function Frame({
         className="pointer-events-none absolute inset-0 opacity-0 shadow-frame transition-opacity duration-fast ease-out group-hover:opacity-100 group-focus-visible:opacity-100"
       />
 
+      {/* Seam light — patina rising from the bottom rule on hover (01 §6.4). */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-glow-edge opacity-0 transition-opacity duration-normal ease-out group-hover:opacity-100 group-focus-visible:opacity-100"
+      />
+
       <span className="absolute left-5 top-5 inline-flex items-center gap-1 text-micro uppercase text-text-image-secondary">
         {label}
         <span aria-hidden="true">↗</span>
@@ -96,7 +102,10 @@ export function Frame({
             {meta}
           </p>
         ) : null}
-        <span className="mt-4 h-px w-full bg-line-hairline transition-colors duration-fast ease-out group-hover:bg-accent group-focus-visible:bg-accent" />
+        {/* The rule draws in accent left → right — light landing on the seam. */}
+        <span className="mt-4 block h-px w-full overflow-hidden bg-line-hairline">
+          <span className="block h-px w-full -translate-x-full bg-accent-image transition-transform duration-normal ease-out group-hover:translate-x-0 group-focus-visible:translate-x-0" />
+        </span>
         {cta ? (
           <span className="mt-3 text-micro uppercase text-text-image-secondary">
             {cta}

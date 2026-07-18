@@ -20,7 +20,9 @@ export function SectionIndex({
         <span
           key={i}
           className={`font-mono text-nano tabular-nums ${
-            i === active ? 'text-accent' : 'text-text-metadata'
+            // Sits over the hero photograph → scheme-invariant tokens only
+            // (01_TOKENS §1.4); scheme text went dark-on-dark in day mode.
+            i === active ? 'text-accent-image' : 'text-text-image-muted'
           }`}
         >
           {String(i + 1).padStart(2, '0')}

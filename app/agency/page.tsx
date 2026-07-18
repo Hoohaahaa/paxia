@@ -1,3 +1,4 @@
+import { TextReveal } from '@/components/reveal/TextReveal'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -22,9 +23,9 @@ export default function AgencyPage() {
     <main id="main" className="px-[var(--margin-x)] py-sect-normal">
       <header className="max-w-content">
         <p className="text-micro uppercase text-text-muted">Agency</p>
-        <h1 className="mt-5 font-display text-d-3 text-text-primary">
+        <TextReveal as="h1" className="mt-5 font-display text-d-3 text-text-primary">
           The Faces
-        </h1>
+        </TextReveal>
         <p className="mt-6 max-w-lead text-lead text-text-secondary">
           The agency represents the people who carry the house. Managed from
           Yerevan, working in every city we dress.

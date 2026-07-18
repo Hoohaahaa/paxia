@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Reveal } from '@/components/reveal/Reveal'
+import { TextReveal } from '@/components/reveal/TextReveal'
 
 /**
  * Craft — asymmetric two columns (docs/02 §3.5): 7/12 editorial image, one
@@ -25,9 +26,14 @@ export function Craft() {
         <div className="col-span-4 md:col-span-4 md:col-start-9 md:self-center">
           <Reveal distance="near">
             <p className="text-micro uppercase text-text-muted">The Hand</p>
-            <h2 className="mt-5 font-display text-d-2 text-text-primary">
-              Mastery is a detail you were never meant to see.
-            </h2>
+          </Reveal>
+          <TextReveal
+            as="h2"
+            className="mt-5 font-display text-d-2 text-text-primary"
+          >
+            Mastery is a detail you were never meant to see.
+          </TextReveal>
+          <Reveal distance="near" index={2}>
             <p className="mt-6 max-w-body text-base text-text-secondary">
               Every seam is closed by hand, every selvedge kept. We photograph
               the cloth, not the garment — the proof of a house lives in the

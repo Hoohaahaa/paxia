@@ -1,3 +1,4 @@
+import { TextReveal } from '@/components/reveal/TextReveal'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { InquiryForm } from '@/components/form/InquiryForm'
@@ -19,9 +20,9 @@ export default function ContactPage() {
     <main id="main" className="px-[var(--margin-x)] py-sect-normal">
       <header className="max-w-body">
         <p className="text-micro uppercase text-text-muted">Contact</p>
-        <h1 className="mt-5 font-display text-d-3 text-text-primary">
+        <TextReveal as="h1" className="mt-5 font-display text-d-3 text-text-primary">
           Write to the house
-        </h1>
+        </TextReveal>
         <p className="mt-6 max-w-lead text-lead text-text-secondary">
           One address for everything — a piece, a fitting, a story, an idea.
           Letters are read in the order they arrive and answered by a person.

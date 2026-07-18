@@ -26,6 +26,7 @@ const config: Config = {
         400: 'var(--patina-400)', 300: 'var(--patina-300)',
       },
       accent: 'var(--accent)',
+      'accent-image': 'var(--accent-on-image)',
       surface: {
         void: 'var(--surface-void)', rail: 'var(--surface-rail)',
         raised: 'var(--surface-raised)', frame: 'var(--surface-frame)',
@@ -115,6 +116,7 @@ const config: Config = {
       backgroundImage: {
         'scrim-bottom': 'var(--scrim-bottom)',
         'scrim-rail': 'var(--scrim-rail)',
+        'glow-edge': 'var(--glow-edge)',
       },
       translate: {
         'reveal-near': 'var(--reveal-near)',

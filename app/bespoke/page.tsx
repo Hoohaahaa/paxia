@@ -1,3 +1,4 @@
+import { TextReveal } from '@/components/reveal/TextReveal'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Reveal } from '@/components/reveal/Reveal'
@@ -41,9 +42,9 @@ export default function BespokePage() {
       <div className="px-[var(--margin-x)] py-sect-normal">
         <header>
           <p className="text-micro uppercase text-text-bone-muted">Bespoke</p>
-          <h1 className="mt-5 font-display text-d-3 text-text-bone">
-            The Atelier
-          </h1>
+          <TextReveal as="h1" className="mt-5 font-display text-d-3 text-text-bone">
+          The Atelier
+        </TextReveal>
           <p className="mt-6 max-w-lead text-lead text-text-bone-muted">
             A garment made for one person, in conversation. Slower than buying,
             and different in kind — the piece is not chosen; it is arrived at.

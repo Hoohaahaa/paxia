@@ -1,3 +1,4 @@
+import { TextReveal } from '@/components/reveal/TextReveal'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getArticles } from '@/lib/journal'
@@ -21,9 +22,9 @@ export default function JournalPage() {
       <div className="px-[var(--margin-x)] py-sect-normal">
         <header>
           <p className="text-micro uppercase text-text-bone-muted">Journal</p>
-          <h1 className="mt-5 font-display text-d-3 text-text-bone">
-            The Journal
-          </h1>
+          <TextReveal as="h1" className="mt-5 font-display text-d-3 text-text-bone">
+          The Journal
+        </TextReveal>
           <p className="mt-6 max-w-lead text-lead text-text-bone-muted">
             Notes from the house — the atelier, the cloth, the cities. Written
             slowly, published when finished.

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Reveal } from '@/components/reveal/Reveal'
+import { TextReveal } from '@/components/reveal/TextReveal'
 
 /**
  * Campaign — the single full-bleed reveal (docs/02 §3.4). One image, one --d-3
@@ -24,11 +24,12 @@ export function Campaign() {
         className="pointer-events-none absolute inset-0 bg-scrim-bottom"
       />
       <div className="absolute inset-x-0 bottom-0 px-[var(--margin-x)] pb-9">
-        <Reveal distance="near">
-          <h2 className="max-w-body font-display text-d-3 text-text-image">
-            Winter Study — the city keeps its secrets.
-          </h2>
-        </Reveal>
+        <TextReveal
+          as="h2"
+          className="max-w-body font-display text-d-3 text-text-image"
+        >
+          Winter Study — the city keeps its secrets.
+        </TextReveal>
       </div>
     </section>
   )

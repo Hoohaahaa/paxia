@@ -1,3 +1,4 @@
+import { TextReveal } from '@/components/reveal/TextReveal'
 import type { Metadata } from 'next'
 import { Frame } from '@/components/frame/Frame'
 import { Reveal } from '@/components/reveal/Reveal'
@@ -15,9 +16,9 @@ export default function CollectionsPage() {
     <main id="main" className="px-[var(--margin-x)] py-sect-normal">
       <header className="max-w-content">
         <p className="text-micro uppercase text-text-muted">Collections</p>
-        <h1 className="mt-5 font-display text-d-3 text-text-primary">
+        <TextReveal as="h1" className="mt-5 font-display text-d-3 text-text-primary">
           The Collections
-        </h1>
+        </TextReveal>
         <p className="mt-6 max-w-lead text-lead text-text-secondary">
           Three studies in one language. Read them as chapters — each is
           complete, and each says more beside the others.

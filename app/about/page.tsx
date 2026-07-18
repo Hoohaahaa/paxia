@@ -1,3 +1,4 @@
+import { TextReveal } from '@/components/reveal/TextReveal'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -34,9 +35,9 @@ export default function AboutPage() {
     <main id="main" className="px-[var(--margin-x)] py-sect-normal">
       <header>
         <p className="text-micro uppercase text-text-muted">About</p>
-        <h1 className="mt-5 max-w-lead font-display text-d-3 text-text-primary">
+        <TextReveal as="h1" className="mt-5 max-w-lead font-display text-d-3 text-text-primary">
           A house, not a shop.
-        </h1>
+        </TextReveal>
         <p className="mt-6 max-w-lead text-lead text-text-secondary">
           PAXIA makes clothes, keeps an atelier, holds five rooms in five
           cities, represents its own faces, and writes down what it learns.

@@ -25,11 +25,8 @@ Remaining work is enhancement, not structure:
 2. Real photography replacing the token-toned SVG placeholders
 3. Ogg/Söhne licenses (Open Decisions 1–2) + Armenian subset (Decision 4)
 4. Hosted deploy → true Lighthouse ≥ 95 verification
-5. **Owner evaluation in progress:** both interactive-atmosphere variants are built on
-   Arrival — the compliant cursor light field (default) and the provisional particle layer
-   (`?atmosphere=particles`, per the 06_DO_NOT amendment). Compare locally:
-   `/` vs `/?atmosphere=particles` vs `/?atmosphere=off`. Owner decides keep / kill;
-   06_DO_NOT then becomes permanent or reverts.
+5. Vercel deploy — the owner connects the repo at vercel.com/new (no config needed;
+   Next.js auto-detected); then the true Lighthouse run.
 
 ---
 
@@ -271,6 +268,28 @@ inline script; toggled from the rail; axe-clean in both schemes.
 schemes, so `--text-on-image{,-secondary,-muted}` were added and every Frame/hero/campaign/
 band moved onto them. This is the rule that stops day mode from ever setting ink text on a
 dark scrim.
+
+**2026-07-18 — Atmosphere decided: the light field stays, particles are out.** The owner
+compared both variants and chose the cursor light field. The provisional exception in
+06_DO_NOT is closed, the particles ban is restored in full, and the particle code is
+removed (git history keeps it). `?atmosphere=off` remains as the baseline flag.
+
+**2026-07-18 — Night is the default, always.** The scheme no longer follows
+`prefers-color-scheme`: OS-light visitors were landing in day mode and reading it as
+broken. Night is the identity; day is entered only by explicit choice. Related day-scheme
+fixes: SectionIndex numerals moved to the new scheme-invariant `--accent-on-image` /
+`--text-on-image-muted` (they sit on the hero photograph and went dark-on-dark in day),
+and the two ThemeToggle instances now sync through a MutationObserver on `data-theme`
+instead of holding independent state.
+
+**2026-07-18 — Headlines set themselves; the seam catches light.** Two motion upgrades,
+doc-first: (1) `TextReveal` — masked line-rise for display headlines (03_MOTION §Reveal
+amendment): lines travel their own height over --t-slow --e-heavy, staggered
+--reveal-stagger; lines are the staggered children, never words. Applied to the Arrival
+masthead (explicit lines), Manifesto, Campaign, Craft, and every index masthead.
+(2) The Frame hover (04_COMPONENTS): the bottom rule draws in accent left→right
+(translateX in a mask — no scale) and `--glow-edge`, a defined gradient token, rises from
+the seam into the image by opacity. Light lands on the seam; the image never moves.
 
 **2026-07-18 — Atmosphere: two variants under evaluation, ban amended in the open.** The
 owner wants to compare a mouse-reactive atmosphere against the particles ban. Per the

@@ -1,4 +1,4 @@
-import { Reveal } from '@/components/reveal/Reveal'
+import { TextReveal } from '@/components/reveal/TextReveal'
 
 /**
  * Manifesto — type only, no image (docs/02 §3.3). One --d-2 statement offset to
@@ -10,12 +10,12 @@ export function Manifesto() {
   return (
     <section aria-label="Manifesto" className="px-[var(--margin-x)] py-sect-hero">
       <div className="grid grid-cols-4 md:grid-cols-12">
-        <Reveal distance="near" className="col-span-4 md:col-span-8 md:col-start-3">
-          <p className="max-w-lead font-display text-d-2 text-text-primary">
+        <div className="col-span-4 md:col-span-8 md:col-start-3">
+          <TextReveal className="max-w-lead font-display text-d-2 text-text-primary">
             Presence is the last luxury. What endures was never made to be
             noticed — only to be trusted.
-          </p>
-        </Reveal>
+          </TextReveal>
+        </div>
       </div>
     </section>
   )

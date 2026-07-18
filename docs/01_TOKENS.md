@@ -81,6 +81,7 @@ scrims are void-based in both schemes, so text on images uses fixed tokens:
 --text-on-image            var(--ink-000)   never remapped
 --text-on-image-secondary  var(--ink-200)   never remapped
 --text-on-image-muted      var(--ink-400)   never remapped
+--accent-on-image          var(--patina-500) never remapped
 ```
 
 Any text inside a Frame, hero, campaign, or image band uses `--text-on-image-*`,
@@ -171,8 +172,10 @@ the scrims, and every `--*-on-image` token are scheme-invariant. Nothing outside
 `styles/tokens.css` knows which scheme is active.
 
 Activation: `data-theme="day"` on `<html>`, set before first paint (inline
-script), persisted as `paxia-theme`, defaulting to the visitor's
-`prefers-color-scheme`, defaulting to night.
+script), persisted as `paxia-theme`. **Default is always night** — night is
+the identity; day is entered only by the visitor's explicit choice. (The
+scheme does not follow `prefers-color-scheme`: a dark house that opens its
+blinds because the OS said so surprises more than it serves.)
 
 Day remaps (all ratios computed from the hex mirrors):
 
@@ -545,9 +548,17 @@ Rules: Arrival only · transform-only movement, lerped · `mix-blend-mode`
 soft-light · gated to `(pointer: fine)` and no reduced motion · degrades to
 the still photograph. If a visitor can name it, it is too strong.
 
-The provisional particle layer (06_DO_NOT §WebGL, owner evaluation) draws with
-`--patina-400` / `--ink-000` read from the cascade at runtime — no colour
-literals in code.
+**The seam light** — the Frame's hover response (04_COMPONENTS): the bottom
+rule draws in accent left→right, and a low light rises from it into the image:
+
+```
+--glow-edge  linear-gradient(to top,
+               oklch(0.60 0.070 80 / 0.20) 0%,
+               oklch(0.60 0.070 80 / 0.06) 40%,
+               transparent 100%)
+```
+
+Scheme-invariant (it sits on imagery). Fades by opacity only.
 
 ## 6.5 Grain
 

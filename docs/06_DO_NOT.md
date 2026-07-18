@@ -95,13 +95,9 @@
 
 # WebGL / Atmosphere
 
-- Particles — **provisional exception, under owner evaluation (2026-07-18):**
-  a single dust-mote layer on Arrival only, canvas-2D, token colours, cursor-
-  displaced, sub-perceptual density, gated to fine pointers without reduced
-  motion, degrading to the still photograph. Enabled only via the
-  `?atmosphere=particles` evaluation flag — **not shipped as default.** The
-  owner decides keep / kill after review; this line then becomes permanent or
-  reverts to a flat ban.
+- Particles. *(Evaluated 2026-07-18 against the cursor light field; the owner
+  chose the light field. The provisional exception is closed and the ban is
+  restored in full.)*
 - Decorative noise.
 - Anything a user would name.
 - Anything that cannot degrade to a still photograph.
