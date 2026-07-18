@@ -30,10 +30,20 @@ yarn-error.log*
 # vercel
 .vercel
 
-# agent skills installed via `npx skills add` (GSAP). Kept on disk but out of
-# the app PR pending a design-system decision — GSAP collides with the locked
-# motion contract (docs/03_MOTION.md, docs/06_DO_NOT.md). Remove these lines to
-# commit the skills once that decision is made.
-/.agents/
-/.claude/
-/skills-lock.json
+# GreenSock GSAP pack (greensock/gsap-skills) — parked on disk, out of version
+# control, pending a motion decision. GSAP collides with the locked motion
+# contract (docs/03_MOTION.md, docs/06_DO_NOT.md). Delete these lines to commit.
+/.agents/skills/gsap-core
+/.agents/skills/gsap-frameworks
+/.agents/skills/gsap-performance
+/.agents/skills/gsap-plugins
+/.agents/skills/gsap-react
+/.agents/skills/gsap-timeline
+/.agents/skills/gsap-utils
+/.claude/skills/gsap-core
+/.claude/skills/gsap-frameworks
+/.claude/skills/gsap-performance
+/.claude/skills/gsap-plugins
+/.claude/skills/gsap-react
+/.claude/skills/gsap-timeline
+/.claude/skills/gsap-utils
