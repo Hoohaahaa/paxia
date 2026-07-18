@@ -25,8 +25,11 @@ Remaining work is enhancement, not structure:
 2. Real photography replacing the token-toned SVG placeholders
 3. Ogg/Söhne licenses (Open Decisions 1–2) + Armenian subset (Decision 4)
 4. Hosted deploy → true Lighthouse ≥ 95 verification
-5. Open question (owner): mouse-responsive atmosphere — conflicts with the particles ban
-   (06_DO_NOT §WebGL); needs either a docs amendment or the compliant light-drift variant
+5. **Owner evaluation in progress:** both interactive-atmosphere variants are built on
+   Arrival — the compliant cursor light field (default) and the provisional particle layer
+   (`?atmosphere=particles`, per the 06_DO_NOT amendment). Compare locally:
+   `/` vs `/?atmosphere=particles` vs `/?atmosphere=off`. Owner decides keep / kill;
+   06_DO_NOT then becomes permanent or reverts.
 
 ---
 
@@ -268,6 +271,14 @@ inline script; toggled from the rail; axe-clean in both schemes.
 schemes, so `--text-on-image{,-secondary,-muted}` were added and every Frame/hero/campaign/
 band moved onto them. This is the rule that stops day mode from ever setting ink text on a
 dark scrim.
+
+**2026-07-18 — Atmosphere: two variants under evaluation, ban amended in the open.** The
+owner wants to compare a mouse-reactive atmosphere against the particles ban. Per the
+amendment clause, 06_DO_NOT §WebGL now carries a *provisional, evaluation-scoped* particle
+exception (Arrival only, canvas-2D, token colours, cursor-displaced, `?atmosphere=particles`
+flag, never default). The compliant variant — the cursor light field (--glow-cursor token,
+soft-light, lerped transform) — is the default and is fully inside 05_QUALITY's permitted
+list. Both gate to fine pointers without reduced motion and degrade to the photograph.
 
 **2026-07-18 — Product-open via WAAPI, still no Motion dependency.** The 03_MOTION product
 open (origin image expands into the hero over --t-hero --e-heavy; surroundings fall away) is

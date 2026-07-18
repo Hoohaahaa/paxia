@@ -528,7 +528,28 @@ pace, not of corners.
 
 Any text over imagery uses one. Non-negotiable — this is a contrast requirement, not a taste.
 
-## 6.4 Grain
+## 6.4 Atmosphere — the cursor light
+
+The permitted interactive atmosphere (05_QUALITY §WebGL permits: atmospheric
+depth · environmental light). A patina light field on the Arrival image drifts
+toward the cursor — the room notices the visitor, without a single particle.
+
+```
+--glow-cursor  radial-gradient(closest-side,
+                 oklch(0.60 0.070 80 / 0.16) 0%,
+                 oklch(0.60 0.070 80 / 0.05) 45%,
+                 transparent 100%)
+```
+
+Rules: Arrival only · transform-only movement, lerped · `mix-blend-mode`
+soft-light · gated to `(pointer: fine)` and no reduced motion · degrades to
+the still photograph. If a visitor can name it, it is too strong.
+
+The provisional particle layer (06_DO_NOT §WebGL, owner evaluation) draws with
+`--patina-400` / `--ink-000` read from the cascade at runtime — no colour
+literals in code.
+
+## 6.5 Grain
 
 ```
 --grain-opacity  0.028
@@ -541,7 +562,7 @@ it kills the digital flatness of large dark fields and stops banding in gradient
 
 It must never animate. Animated grain is a film-school affectation.
 
-## 6.5 Image Treatment
+## 6.6 Image Treatment
 
 ```
 --img-ratio-portrait   3 / 4

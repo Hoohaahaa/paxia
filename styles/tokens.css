@@ -221,6 +221,14 @@
     oklch(0.13 0.004 65 / 0) 100%
   );
 
+  /* Cursor light field — Arrival only (01_TOKENS §6.4). */
+  --glow-cursor: radial-gradient(
+    closest-side,
+    oklch(0.6 0.07 80 / 0.16) 0%,
+    oklch(0.6 0.07 80 / 0.05) 45%,
+    transparent 100%
+  );
+
   --grain-opacity: 0.028;
   --grain-size: 180px;
 

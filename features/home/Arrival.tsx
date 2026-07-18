@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Reveal } from '@/components/reveal/Reveal'
 import { SectionIndex } from './SectionIndex'
+import { Atmosphere } from './Atmosphere'
 
 /**
  * Arrival — the 100vh opening (docs/02 §3.1). Full-bleed campaign image with
@@ -30,6 +31,9 @@ export function Arrival() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-scrim-rail"
       />
+
+      {/* Interactive atmosphere — above image and scrim, below content. */}
+      <Atmosphere />
 
       <div className="relative z-content flex h-full flex-col justify-end px-[var(--margin-x)] pb-9">
         <Reveal distance="near" className="max-w-content">
