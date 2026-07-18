@@ -4,22 +4,21 @@
 > This is the only file that changes constantly. Everything else is a contract.
 
 **Updated:** 2026-07-17
-**Phase:** 1 — Build (Slices 01–02 shipped)
+**Phase:** 1 — Build (Slices 01–03 shipped)
 
 ---
 
 ## Now
 
-**Slices 01 and 02 are built and passing.** The full homepage composition (docs/02 §3) is
-live: Arrival → Ecosystem Strip → Manifesto → Campaign → Craft → Presence → Journal → Footer,
-on the shell (Rail + mobile bone MenuPanel, Grain). `pnpm check` is green, the production
-build succeeds (First Load JS 116 kB < 120 kB), and axe reports **0 WCAG 2 A/AA violations**
-on desktop and mobile. The token system still needed no structural change across the whole
-homepage — only the one accessibility correction logged below.
+**Slices 01–03 are built and passing.** Shell + homepage + the first routes beyond home:
+`/collections` (index), `/collections/[collection]` (exhibition walk, 3 collections SSG),
+`/products/[product]` (9 products SSG) following the fixed order Emotion → Object → Material →
+Craft → Information → Purchase → Related. The `Button` primitive and a React-free `/lib/catalog`
+data layer landed. `pnpm check` green, build succeeds (all routes < 120 kB), axe **0 WCAG 2
+A/AA violations** on the index, a collection, and a product (desktop + mobile).
 
-Immediate task: **Slice 03 — Collections + Product.** The first route beyond home; the
-Product page order is fixed (docs/02 §5): Emotion → Object → Material → Craft → Info →
-Purchase → Related.
+Immediate task: **Slice 04 — Bespoke + Store.** Both invert toward bone (`--surface-inverse`)
+and run low-density; Store is architectural/wide, Bespoke intimate/narrow (docs/02 §4).
 
 ---
 
@@ -54,12 +53,22 @@ Purchase → Related.
   - [x] Journal — three articles, editorial ratio, mono date + --d-1 title, no excerpt
   - [x] Footer — site-wide, --surface-rail, four IA columns + legal
   - [x] axe 0 violations (desktop + mobile); First Load JS 116 kB < 120 kB
+- [x] **Slice 03 — Collections + Product**
+  - [x] `Button` primitive (04_COMPONENTS): 4 variants, --r-soft, 44px, press/focus
+  - [x] `/lib/catalog.ts` — React-free data + getters (CMS-swappable)
+  - [x] `/collections` index — editorial intro + collection Frames
+  - [x] `/collections/[collection]` — type-only intro + product grid (SSG, notFound guard)
+  - [x] `/products/[product]` — full narrative order, sticky purchase below --bp-lg (SSG)
+  - [x] `PurchaseModule` — size select + Add to Bag (aria-live; cart not yet wired)
+  - [x] axe 0 violations across index/collection/product (desktop + mobile)
+  - [~] Product-open shared-element transition (03_MOTION) deferred — needs Motion/View
+        Transitions; pages use the standard reveal for now
 
 ---
 
 ## Next
 
-**Slice 03 — Collections + Product**
+**Slice 04 — Bespoke + Store**
 **Slice 03 — Collections + Product**
 **Slice 04 — Bespoke + Store**
 **Slice 05 — Agency + Journal**
@@ -156,6 +165,21 @@ the teaser is its own small component. Frame.Journal remains for the Journal ind
 **2026-07-17 — Two full-bleed 100vh sections on home, by design.** Arrival (§3.1) and Campaign
 (§3.4) are both full-bleed. The "once per session" guard (§7) is against *gratuitous* extra
 campaigns; the canonical composition names exactly these two. No third was added.
+
+**2026-07-17 — Catalog is a flat /lib data module, not a CMS.** `lib/catalog.ts` holds the
+collections/products as plain data + pure getters (React-free per the folder map). Pages read
+it through `getX` helpers so a DAM/CMS can replace the module without touching routes. Prices
+are integer EUR formatted with `Intl.NumberFormat` (tabular, no fraction).
+
+**2026-07-17 — Cart is not wired in Slice 03.** `PurchaseModule` selects a size and confirms
+via an `aria-live` line rather than faking persistence. Wishlist/Cart/Checkout are `[Future]`
+in the IA; the honest placeholder beats a fake bag count. "Add to Bag" follows the voice list
+(never "Buy Now").
+
+**2026-07-17 — Product-open shared-element transition deferred.** 03_MOTION's "the selected
+image is the origin, expands into the hero" is a cross-route shared-element move (Motion +
+View Transitions). Slice 03 ships the pages with the standard reveal; the origin transition is
+a scoped later enhancement, not a silent omission.
 
 ---
 
