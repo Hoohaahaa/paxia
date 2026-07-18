@@ -3,22 +3,23 @@
 > Read first, every session. Update at the end of every session.
 > This is the only file that changes constantly. Everything else is a contract.
 
-**Updated:** 2026-07-17
-**Phase:** 1 — Build (Slices 01–03 shipped)
+**Updated:** 2026-07-18
+**Phase:** 1 — Build (Slices 01–04 shipped)
 
 ---
 
 ## Now
 
-**Slices 01–03 are built and passing.** Shell + homepage + the first routes beyond home:
-`/collections` (index), `/collections/[collection]` (exhibition walk, 3 collections SSG),
-`/products/[product]` (9 products SSG) following the fixed order Emotion → Object → Material →
-Craft → Information → Purchase → Related. The `Button` primitive and a React-free `/lib/catalog`
-data layer landed. `pnpm check` green, build succeeds (all routes < 120 kB), axe **0 WCAG 2
-A/AA violations** on the index, a collection, and a product (desktop + mobile).
+**Slices 01–04 are built and passing.** Shell, homepage, Collections + Product, and now
+Bespoke + Store: `/bespoke` (the bone world debut — process programme + appointment form),
+`/store` (architectural index, alternating wide bands), `/store/[store]` (5 cities SSG).
+The `Field` primitive (printed-document forms) and a `Button` bone tone landed with it.
+`pnpm check` green, build succeeds (all routes < 120 kB), axe **0 WCAG 2 A/AA violations**
+on bespoke/store/store-detail (desktop + mobile); the form's error → fix → confirmation flow
+verified in-browser.
 
-Immediate task: **Slice 04 — Bespoke + Store.** Both invert toward bone (`--surface-inverse`)
-and run low-density; Store is architectural/wide, Bespoke intimate/narrow (docs/02 §4).
+Immediate task: **Slice 05 — Agency + Journal.** The last numbered slice: Agency structured
+medium-high density; Journal inverts to bone for reading (docs/02 §4).
 
 ---
 
@@ -63,12 +64,22 @@ and run low-density; Store is architectural/wide, Bespoke intimate/narrow (docs/
   - [x] axe 0 violations across index/collection/product (desktop + mobile)
   - [~] Product-open shared-element transition (03_MOTION) deferred — needs Motion/View
         Transitions; pages use the standard reveal for now
+- [x] **Slice 04 — Bespoke + Store**
+  - [x] `Field` primitive (04_COMPONENTS): Text/TextArea/Select, bottom-rule-only,
+        real labels, error explains the fix, dark + bone tones
+  - [x] `Button` bone tone (dark-ground palette vanishes on --surface-inverse)
+  - [x] `/lib/stores.ts` — flagship data, React-free
+  - [x] `/bespoke` — bone inversion, three-movement process, appointment form
+        (client island; no backend yet — confirms honestly via aria-live)
+  - [x] `/store` — architectural index, alternating full-width bands, low density
+  - [x] `/store/[store]` — 5 cities SSG, printed-card practicalities (mono tabular)
+  - [x] axe 0 violations on all three routes (desktop + mobile); form flow verified
 
 ---
 
 ## Next
 
-**Slice 04 — Bespoke + Store**
+**Slice 05 — Agency + Journal** *(last numbered slice)*
 **Slice 03 — Collections + Product**
 **Slice 04 — Bespoke + Store**
 **Slice 05 — Agency + Journal**
@@ -180,6 +191,16 @@ in the IA; the honest placeholder beats a fake bag count. "Add to Bag" follows t
 image is the origin, expands into the hero" is a cross-route shared-element move (Motion +
 View Transitions). Slice 03 ships the pages with the standard reveal; the origin transition is
 a scoped later enhancement, not a silent omission.
+
+**2026-07-18 — Primitives grew tones, not variants.** The bone world (Bespoke, Journal)
+needed Button and Field to survive inversion. Rather than new components (BoneButton), each
+primitive takes a `tone: 'dark' | 'bone'` prop mapping to the same anatomy with the inverse
+ink pairings from 01_TOKENS §1.4. One component, two grounds — same rule as Frame's variants.
+
+**2026-07-18 — Bespoke form has no backend; it says so.** AppointmentRequest validates
+(errors name the fix, per 04_COMPONENTS) and confirms via aria-live with an honest promise
+("the atelier will write within two working days") — but nothing is transmitted yet. Wiring
+(email/CRM) is an infrastructure decision, not a UI one; the page ships without pretending.
 
 ---
 
