@@ -33,7 +33,7 @@ export function SearchPanel() {
         role="combobox"
         aria-expanded={results.length > 0}
         aria-controls={resultsId}
-        className="mt-2 w-full rounded-none border-0 border-b border-line-hairline bg-transparent px-0 py-3 text-lead text-text-primary outline-none transition-colors duration-fast ease-out placeholder:text-text-muted focus-visible:border-patina-500"
+        className="mt-2 w-full rounded-none border-0 border-b border-line-hairline bg-transparent px-0 py-3 text-lead text-text-primary outline-none transition-colors duration-fast ease-out placeholder:text-text-muted focus-visible:border-accent"
         placeholder="A piece, a city, a name, a word"
       />
 

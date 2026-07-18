@@ -4,6 +4,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { PRIMARY_NAV, UTILITY_NAV } from './nav'
+import { ThemeToggle } from '@/components/theme/ThemeToggle'
 
 export function Rail() {
   const pathname = usePathname()
@@ -31,7 +32,7 @@ export function Rail() {
                     the mark between items waits on real routes. */}
                 <span
                   aria-hidden="true"
-                  className={`absolute -left-3 top-1/2 h-3 w-seam -translate-y-1/2 bg-patina-500 transition-opacity duration-normal ease-out ${
+                  className={`absolute -left-3 top-1/2 h-3 w-seam -translate-y-1/2 bg-accent transition-opacity duration-normal ease-out ${
                     active ? 'opacity-100' : 'opacity-0'
                   }`}
                 />
@@ -66,6 +67,9 @@ export function Rail() {
               </Link>
             </li>
           ))}
+          <li>
+            <ThemeToggle className="text-text-muted hover:text-text-primary" />
+          </li>
         </ul>
       </nav>
     </div>

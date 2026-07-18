@@ -59,11 +59,11 @@ export default function StorePage() {
                     className="pointer-events-none absolute inset-0 opacity-0 shadow-frame transition-opacity duration-fast ease-out group-hover:opacity-100 group-focus-visible:opacity-100"
                   />
                   <div className="absolute inset-x-0 bottom-0 p-5">
-                    <h2 className="font-display text-d-1 text-text-primary">
+                    <h2 className="font-display text-d-1 text-text-image">
                       {store.city}
                     </h2>
                     {store.flagship ? (
-                      <p className="mt-2 font-mono text-nano uppercase tabular-nums text-text-metadata">
+                      <p className="mt-2 font-mono text-nano uppercase tabular-nums text-text-image-muted">
                         Flagship
                       </p>
                     ) : null}

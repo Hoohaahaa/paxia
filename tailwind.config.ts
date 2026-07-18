@@ -25,15 +25,20 @@ const config: Config = {
         600: 'var(--patina-600)', 500: 'var(--patina-500)',
         400: 'var(--patina-400)', 300: 'var(--patina-300)',
       },
+      accent: 'var(--accent)',
       surface: {
         void: 'var(--surface-void)', rail: 'var(--surface-rail)',
         raised: 'var(--surface-raised)', frame: 'var(--surface-frame)',
         inverse: 'var(--surface-inverse)',
+        'inverse-hover': 'var(--surface-inverse-hover)',
       },
       text: {
         primary: 'var(--text-primary)', secondary: 'var(--text-secondary)',
         muted: 'var(--text-muted)', metadata: 'var(--text-metadata)',
         bone: 'var(--text-on-bone)', 'bone-muted': 'var(--text-on-bone-muted)',
+        image: 'var(--text-on-image)',
+        'image-secondary': 'var(--text-on-image-secondary)',
+        'image-muted': 'var(--text-on-image-muted)',
       },
       line: {
         hairline: 'var(--line-hairline)', strong: 'var(--line-strong)',

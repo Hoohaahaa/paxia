@@ -12,18 +12,21 @@ import type { ButtonHTMLAttributes } from 'react'
 type Variant = 'primary' | 'secondary' | 'ghost' | 'text'
 type Tone = 'dark' | 'bone'
 
+// Fully semantic so both schemes resolve correctly: primary on the base
+// ground uses the inverse surface; primary on an inverse section uses the
+// base surface. No raw ink steps — the scheme flip carries the button.
 const VARIANTS: Record<Tone, Record<Variant, string>> = {
   dark: {
-    primary: 'bg-ink-0 text-text-bone hover:bg-ink-50',
+    primary: 'bg-surface-inverse text-text-bone hover:bg-surface-inverse-hover',
     secondary:
       'border border-line-hairline text-text-primary hover:border-line-strong',
     ghost: 'text-text-secondary hover:text-text-primary',
     text: 'text-text-primary underline-offset-4 hover:underline',
   },
   bone: {
-    primary: 'bg-ink-900 text-ink-0 hover:bg-ink-800',
+    primary: 'bg-surface-void text-text-primary hover:bg-surface-raised',
     secondary:
-      'border border-line-bone text-text-bone hover:border-ink-600',
+      'border border-line-bone text-text-bone hover:border-text-bone-muted',
     ghost: 'text-text-bone-muted hover:text-text-bone',
     text: 'text-text-bone underline-offset-4 hover:underline',
   },

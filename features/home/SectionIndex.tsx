@@ -20,7 +20,7 @@ export function SectionIndex({
         <span
           key={i}
           className={`font-mono text-nano tabular-nums ${
-            i === active ? 'text-patina-500' : 'text-text-metadata'
+            i === active ? 'text-accent' : 'text-text-metadata'
           }`}
         >
           {String(i + 1).padStart(2, '0')}

@@ -4,6 +4,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { PRIMARY_NAV, UTILITY_NAV } from './nav'
+import { ThemeToggle } from '@/components/theme/ThemeToggle'
 
 const WORDMARK_TRACK = { letterSpacing: 'var(--u-wordmark-track)' } as const
 
@@ -134,6 +135,7 @@ export function RailMobile() {
               {item.label}
             </Link>
           ))}
+          <ThemeToggle className="text-text-bone-muted" />
         </nav>
       </div>
     </>

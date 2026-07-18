@@ -27,7 +27,7 @@ const CONTROL: Record<Tone, string> = {
 }
 
 const BASE_CONTROL =
-  'w-full rounded-none border-0 border-b bg-transparent px-0 py-3 text-base outline-none transition-colors duration-fast ease-out focus-visible:border-patina-500'
+  'w-full rounded-none border-0 border-b bg-transparent px-0 py-3 text-base outline-none transition-colors duration-fast ease-out focus-visible:border-accent'
 
 type CommonProps = {
   label: string

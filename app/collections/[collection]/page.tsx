@@ -68,6 +68,7 @@ export default async function CollectionPage({
             <Reveal distance="mid" index={i} className="h-full">
               <Frame
                 variant="product"
+                transition="product"
                 href={`/products/${product.slug}`}
                 image={product.images[0] ?? found.cover}
                 alt={`${product.name} — ${product.eyebrow}.`}

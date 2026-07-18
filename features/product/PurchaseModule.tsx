@@ -46,7 +46,7 @@ export function PurchaseModule({ name, priceEUR, sizes }: PurchaseModuleProps) {
                 }}
                 className={`inline-flex min-h-tap min-w-tap items-center justify-center rounded-soft border px-4 text-micro uppercase outline-none transition-colors duration-fast ease-out focus-visible:shadow-focus ${
                   selected
-                    ? 'border-patina-500 text-text-primary'
+                    ? 'border-accent text-text-primary'
                     : 'border-line-hairline text-text-secondary hover:border-line-strong'
                 }`}
               >

@@ -50,14 +50,18 @@ Note what is absent: `#FFFFFF`. Pure white is as cheap as pure black. Our lighte
 ## 1.3 Semantic Surfaces
 
 ```
---surface-void        var(--ink-950)   page background
---surface-rail        var(--ink-900)   persistent navigation rail
---surface-raised      var(--ink-850)
---surface-frame       var(--ink-800)   editorial frame ground
---surface-inverse     var(--ink-000)   bone sections (Journal, Bespoke docs)
---surface-scrim       oklch(0.13 0.004 65 / 0.62)
---surface-scrim-soft  oklch(0.13 0.004 65 / 0.34)
+--surface-void           var(--ink-950)   page background
+--surface-rail           var(--ink-900)   persistent navigation rail
+--surface-raised         var(--ink-850)
+--surface-frame          var(--ink-800)   editorial frame ground
+--surface-inverse        var(--ink-000)   bone sections (Journal, Bespoke docs)
+--surface-inverse-hover  var(--ink-050)   hover ground for inverse-ground objects
+--surface-scrim          oklch(0.13 0.004 65 / 0.62)
+--surface-scrim-soft     oklch(0.13 0.004 65 / 0.34)
 ```
+
+Scrims are **void-based in both schemes** — they sit on photography, and the
+photography does not change with the scheme.
 
 ## 1.4 Semantic Text
 
@@ -69,6 +73,19 @@ Note what is absent: `#FFFFFF`. Pure white is as cheap as pure black. Our lighte
 --text-on-bone        var(--ink-900)
 --text-on-bone-muted  var(--ink-600)
 ```
+
+**Text over photography never follows the scheme.** Imagery is graded dark and
+scrims are void-based in both schemes, so text on images uses fixed tokens:
+
+```
+--text-on-image            var(--ink-000)   never remapped
+--text-on-image-secondary  var(--ink-200)   never remapped
+--text-on-image-muted      var(--ink-400)   never remapped
+```
+
+Any text inside a Frame, hero, campaign, or image band uses `--text-on-image-*`,
+not `--text-*`. This is what keeps the light scheme from ever putting dark text
+on a dark scrim.
 
 ## 1.5 Line
 
@@ -97,6 +114,16 @@ Gold is a brand asking to be seen as luxurious. Patina is a brand that has been 
 
 Budget: **< 3% of any viewport.** Used for the active state, the focus ring, and nothing else
 by default.
+
+Components never reference `--patina-*` directly. They use the scheme-aware alias:
+
+```
+--accent   var(--patina-500) on night · var(--patina-600) on day
+```
+
+Because patina-500 reads 5.06:1 on void but only 3.74:1 on bone (computed), the
+day scheme steps the accent down to patina-600 (5.21:1 on bone). The alias is
+what makes that swap a token change instead of a component hunt.
 
 ## 1.7 Functional
 
@@ -135,6 +162,44 @@ compliant floor. Every remaining ink step above 550 is safe for text at any size
 
 **Text over photography always requires `--surface-scrim` or a gradient scrim.**
 The reference's store strip (city names on bare imagery) fails this. Never repeat it.
+
+## 1.10 Schemes — Night and Day
+
+The house is dark-first; **night is the identity, day is a courtesy.** The day
+scheme is a remap of the *semantic* layer only — the ink ramp, the patina scale,
+the scrims, and every `--*-on-image` token are scheme-invariant. Nothing outside
+`styles/tokens.css` knows which scheme is active.
+
+Activation: `data-theme="day"` on `<html>`, set before first paint (inline
+script), persisted as `paxia-theme`, defaulting to the visitor's
+`prefers-color-scheme`, defaulting to night.
+
+Day remaps (all ratios computed from the hex mirrors):
+
+```
+--surface-void            var(--ink-000)
+--surface-rail            var(--ink-050)
+--surface-raised          var(--ink-100)
+--surface-frame           var(--ink-100)
+--surface-inverse         var(--ink-950)
+--surface-inverse-hover   var(--ink-850)
+--text-primary            var(--ink-900)   18.04:1 on day ground
+--text-secondary          var(--ink-700)   11.09:1
+--text-muted              var(--ink-600)    7.03:1
+--text-metadata           var(--ink-600)    7.03:1  (ink-550 reads 4.05:1 on bone — fails; stepped up)
+--text-on-bone            var(--ink-050)   17.72:1 on day inverse
+--text-on-bone-muted      var(--ink-300)    9.38:1
+--line-hairline           = --line-on-bone values
+--line-strong             ink-950 @ 0.28
+--line-on-bone            ink-000 @ 0.14   (inverse sections are dark on day)
+--accent                  var(--patina-600) 5.21:1  (patina-500 reads 3.74:1 — fails)
+--focus-ring              rebuilt from day ground + patina-600
+--lift-frame              inset ink-950 @ 0.08
+```
+
+What never remaps: the ink ramp, the patina scale, `--scrim-*`,
+`--text-on-image-*`, grain, spacing, type, motion. Day is a lighting change,
+not a redesign.
 
 ---
 

@@ -26,7 +26,7 @@
   }
 
   ::selection {
-    background-color: var(--patina-500);
+    background-color: var(--accent);
     color: var(--surface-void);
   }
 }

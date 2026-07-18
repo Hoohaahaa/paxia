@@ -48,8 +48,17 @@ export function Presence() {
         />
       </div>
 
+      {/* While a store image is behind the band, all text flips to the
+          scheme-invariant on-image tokens — dark scrim, bone text, both
+          schemes (01_TOKENS §1.4). */}
       <div className="relative w-full px-[var(--margin-x)]">
-        <p className="text-micro uppercase text-text-muted">Presence</p>
+        <p
+          className={`text-micro uppercase transition-colors duration-medium ease-inout ${
+            active === null ? 'text-text-muted' : 'text-text-image-muted'
+          }`}
+        >
+          Presence
+        </p>
         <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
           {CITIES.map((city, i) => (
             <li key={city.name}>
@@ -59,7 +68,11 @@ export function Presence() {
                 onMouseLeave={() => setActive(null)}
                 onFocus={() => setActive(i)}
                 onBlur={() => setActive(null)}
-                className="inline-flex min-h-tap items-center text-micro uppercase text-text-secondary transition-colors duration-fast ease-out hover:text-text-primary focus-visible:text-text-primary"
+                className={`inline-flex min-h-tap items-center text-micro uppercase transition-colors duration-fast ease-out ${
+                  active === null
+                    ? 'text-text-secondary hover:text-text-primary focus-visible:text-text-primary'
+                    : 'text-text-image-secondary hover:text-text-image focus-visible:text-text-image'
+                }`}
               >
                 {city.name}
               </Link>

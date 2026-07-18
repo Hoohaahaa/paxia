@@ -73,7 +73,11 @@ export default async function ProductPage({
       {/* 1 — Emotion. Image-led; the piece is felt before it is specified. */}
       <section className="mt-9 grid gap-8 lg:grid-cols-2 lg:gap-5">
         <Reveal distance="far">
-          <div className="relative aspect-portrait w-full overflow-hidden bg-surface-frame">
+          {/* data-product-hero: landing target of the product-open transition. */}
+          <div
+            data-product-hero
+            className="relative aspect-portrait w-full overflow-hidden bg-surface-frame"
+          >
             <Image
               src={hero}
               alt={`${found.name} — ${found.eyebrow}.`}
@@ -177,6 +181,7 @@ export default async function ProductPage({
                 <Reveal distance="mid" index={i} className="h-full">
                   <Frame
                     variant="product"
+                    transition="product"
                     href={`/products/${item.slug}`}
                     image={item.images[0] ?? hero}
                     alt={`${item.name} — ${item.eyebrow}.`}

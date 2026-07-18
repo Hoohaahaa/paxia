@@ -6,6 +6,8 @@ import { Grain } from '@/components/grain/Grain'
 import { Rail } from '@/components/rail/Rail'
 import { RailMobile } from '@/components/rail/RailMobile'
 import { Footer } from '@/components/footer/Footer'
+import { ThemeScript } from '@/components/theme/ThemeToggle'
+import { ProductOpenListener } from '@/features/product-open/ProductOpenListener'
 
 export const metadata: Metadata = {
   title: {
@@ -31,9 +33,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${fontDisplay.variable} ${fontUI.variable} ${fontMono.variable}`}
     >
       <body className="bg-surface-void text-text-primary font-ui">
+        <ThemeScript />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-toast focus:bg-surface-inverse focus:px-4 focus:py-2 focus:text-micro focus:uppercase focus:text-text-bone"
@@ -44,6 +48,7 @@ export default function RootLayout({
         <Grain />
         <Rail />
         <RailMobile />
+        <ProductOpenListener />
 
         <div className="pt-rail-h md:pl-rail md:pt-0">
           {children}

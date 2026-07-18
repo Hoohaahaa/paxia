@@ -25,6 +25,7 @@
   --surface-raised: var(--ink-850);
   --surface-frame: var(--ink-800);
   --surface-inverse: var(--ink-000);
+  --surface-inverse-hover: var(--ink-050);
   --surface-scrim: oklch(0.13 0.004 65 / 0.62);
   --surface-scrim-soft: oklch(0.13 0.004 65 / 0.34);
 
@@ -35,6 +36,11 @@
   --text-metadata: var(--ink-550);
   --text-on-bone: var(--ink-900);
   --text-on-bone-muted: var(--ink-600);
+
+  /* Over photography — scheme-invariant (01_TOKENS §1.4). */
+  --text-on-image: var(--ink-000);
+  --text-on-image-secondary: var(--ink-200);
+  --text-on-image-muted: var(--ink-400);
 
   /* ─── Line ───────────────────────────────────────────────────── */
   --line-hairline: oklch(0.98 0.005 76 / 0.10);
@@ -47,6 +53,9 @@
   --patina-400: oklch(0.74 0.068 82);
   --patina-300: oklch(0.83 0.052 84);
 
+  /* Scheme-aware accent alias — components never reference --patina-* (§1.6). */
+  --accent: var(--patina-500);
+
   /* ─── Functional ─────────────────────────────────────────────── */
   --ok: oklch(0.62 0.055 150);
   --warn: oklch(0.72 0.075 75);
@@ -54,7 +63,7 @@
   --info: oklch(0.64 0.045 240);
 
   /* ─── Focus ──────────────────────────────────────────────────── */
-  --focus-ring: 0 0 0 1px var(--surface-void), 0 0 0 3px var(--patina-500);
+  --focus-ring: 0 0 0 1px var(--surface-void), 0 0 0 3px var(--accent);
   --focus-offset: 2px;
 
   /* ─── Type families ──────────────────────────────────────────── */
@@ -226,6 +235,33 @@
   :root {
     --rail-w: 216px;
   }
+}
+
+/* ─── Day scheme (01_TOKENS §1.10) ─────────────────────────────────
+ * A remap of the semantic layer only. The ink ramp, patina scale, scrims,
+ * --text-on-image-*, grain, space, type, and motion never change.
+ * All ratios computed — see the doc. */
+:root[data-theme='day'] {
+  --surface-void: var(--ink-000);
+  --surface-rail: var(--ink-050);
+  --surface-raised: var(--ink-100);
+  --surface-frame: var(--ink-100);
+  --surface-inverse: var(--ink-950);
+  --surface-inverse-hover: var(--ink-850);
+
+  --text-primary: var(--ink-900);
+  --text-secondary: var(--ink-700);
+  --text-muted: var(--ink-600);
+  --text-metadata: var(--ink-600); /* ink-550 is 4.05:1 on bone — fails AA */
+  --text-on-bone: var(--ink-050);
+  --text-on-bone-muted: var(--ink-300);
+
+  --line-hairline: oklch(0.13 0.004 65 / 0.14);
+  --line-strong: oklch(0.13 0.004 65 / 0.28);
+  --line-on-bone: oklch(0.98 0.005 76 / 0.14);
+
+  --accent: var(--patina-600); /* patina-500 is 3.74:1 on bone — fails */
+  --lift-frame: inset 0 0 0 1px oklch(0.13 0.004 65 / 0.08);
 }
 
 @media (prefers-reduced-motion: reduce) {

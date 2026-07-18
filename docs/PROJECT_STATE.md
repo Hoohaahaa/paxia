@@ -16,12 +16,17 @@ Become / Book), Journal → Article, About, Contact, Search, and a Cart empty st
 rail links there; checkout stays [Future]). 41 static pages, every route < 120 kB, axe
 0 WCAG 2 A/AA violations at every check, `pnpm check` green throughout.
 
+**Shipped since:** the product-open transition (WAAPI, token-driven) and the **day scheme**
+(night/day theming via a semantic-layer remap in `tokens.css`, toggle in the rail, computed
+contrast, axe-clean in both schemes).
+
 Remaining work is enhancement, not structure:
-1. Product-open shared-element transition (Motion enters here) — 03_MOTION §Page Transition
-2. Form + cart backends (email/CRM, bag persistence, checkout)
-3. Real photography replacing the token-toned SVG placeholders
-4. Ogg/Söhne licenses (Open Decisions 1–2) + Armenian subset (Decision 4)
-5. Hosted deploy → true Lighthouse ≥ 95 verification
+1. Form + cart backends (email/CRM, bag persistence, checkout)
+2. Real photography replacing the token-toned SVG placeholders
+3. Ogg/Söhne licenses (Open Decisions 1–2) + Armenian subset (Decision 4)
+4. Hosted deploy → true Lighthouse ≥ 95 verification
+5. Open question (owner): mouse-responsive atmosphere — conflicts with the particles ban
+   (06_DO_NOT §WebGL); needs either a docs amendment or the compliant light-drift variant
 
 ---
 
@@ -249,6 +254,27 @@ replaces `searchEntries` without touching the UI. No spinner — results are syn
 **2026-07-18 — /cart exists as an EmptyState.** The rail says CART (0); a 404 behind the
 shell's own link would break the house. The page is the 04_COMPONENTS editorial empty state
 (statement + one action) until checkout arrives — the route will not move.
+
+**2026-07-18 — Day scheme as a semantic remap, night-first.** Light mode requested by the
+owner. Implemented entirely inside `styles/tokens.css` as `[data-theme='day']` overrides of
+the semantic layer; the ink ramp, patina scale, scrims, and the new `--text-on-image-*`
+tokens never remap. Two contrast corrections were forced by computation: day metadata steps
+to ink-600 (ink-550 reads 4.05:1 on bone) and the accent alias `--accent` steps to
+patina-600 (patina-500 reads 3.74:1 on bone). Components now reference `--accent`, never
+`--patina-*`. Default: stored choice → prefers-color-scheme → night. Set pre-paint by an
+inline script; toggled from the rail; axe-clean in both schemes.
+
+**2026-07-18 — Text over photography is scheme-invariant.** Imagery is graded dark in both
+schemes, so `--text-on-image{,-secondary,-muted}` were added and every Frame/hero/campaign/
+band moved onto them. This is the rule that stops day mode from ever setting ink text on a
+dark scrim.
+
+**2026-07-18 — Product-open via WAAPI, still no Motion dependency.** The 03_MOTION product
+open (origin image expands into the hero over --t-hero --e-heavy; surroundings fall away) is
+a delegated click listener + FLIP overlay driven by the Web Animations API, which consumes
+the duration/easing tokens verbatim at runtime — transform/opacity only, reduced-motion and
+modified clicks fall through to plain navigation. Motion (the library) still has no job here;
+it earns its dependency when choreography outgrows WAAPI.
 
 ---
 

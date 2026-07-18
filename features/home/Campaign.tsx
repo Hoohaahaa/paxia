@@ -25,7 +25,7 @@ export function Campaign() {
       />
       <div className="absolute inset-x-0 bottom-0 px-[var(--margin-x)] pb-9">
         <Reveal distance="near">
-          <h2 className="max-w-body font-display text-d-3 text-text-primary">
+          <h2 className="max-w-body font-display text-d-3 text-text-image">
             Winter Study — the city keeps its secrets.
           </h2>
         </Reveal>
