@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { AgencyForm } from '@/features/agency/AgencyForm'
+import { InquiryForm } from '@/components/form/InquiryForm'
 
 export const metadata: Metadata = {
   title: 'Book a Model',
@@ -31,7 +31,40 @@ export default function BookPage() {
       </header>
 
       <div className="mt-11 max-w-body">
-        <AgencyForm kind="book" />
+        <InquiryForm
+          submitLabel="Request Booking"
+          confirmMessage="Thank you. A booker will write within one working day to confirm availability."
+          fields={[
+            {
+              kind: 'text',
+              id: 'booking-name',
+              name: 'name',
+              label: 'Name',
+              autoComplete: 'name',
+              requiredMessage: 'Add your name so we know who is writing.',
+            },
+            {
+              kind: 'email',
+              id: 'booking-email',
+              name: 'email',
+              label: 'Email',
+              autoComplete: 'email',
+              requiredMessage: 'Add an email so we can reply.',
+            },
+            {
+              kind: 'text',
+              id: 'booking-company',
+              name: 'company',
+              label: 'Company or title',
+            },
+            {
+              kind: 'textarea',
+              id: 'booking-notes',
+              name: 'notes',
+              label: 'The work, the dates, the city',
+            },
+          ]}
+        />
       </div>
     </main>
   )

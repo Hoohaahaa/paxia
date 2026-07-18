@@ -10,16 +10,18 @@
 
 ## Now
 
-**The numbered plan is complete.** All five slices are built and passing: Shell, Homepage,
-Collections + Product, Bespoke + Store, Agency + Journal. 37 static pages, every route
-< 120 kB, axe 0 WCAG 2 A/AA violations at every check, `pnpm check` green throughout.
+**The IA is fully navigable.** Slices 01–06 shipped: every page in docs/02 §1 exists —
+Home, Collections → Collection → Product, Bespoke, Store → Detail, Agency (+ Talent /
+Become / Book), Journal → Article, About, Contact, Search, and a Cart empty state (the
+rail links there; checkout stays [Future]). 41 static pages, every route < 120 kB, axe
+0 WCAG 2 A/AA violations at every check, `pnpm check` green throughout.
 
-The IA branches that remain unbuilt (all `[Future]` or unnumbered in docs/02 §1):
-About · Contact · Search · Cart/Checkout · Account/Wishlist.
-
-Proposed next: **Slice 06 — Completion** (About + Contact + a first Search), then the
-deferred enhancements: product-open shared-element transition (Motion), form/cart backends,
-real photography, font licenses, hosted deploy + true Lighthouse run.
+Remaining work is enhancement, not structure:
+1. Product-open shared-element transition (Motion enters here) — 03_MOTION §Page Transition
+2. Form + cart backends (email/CRM, bag persistence, checkout)
+3. Real photography replacing the token-toned SVG placeholders
+4. Ogg/Söhne licenses (Open Decisions 1–2) + Armenian subset (Decision 4)
+5. Hosted deploy → true Lighthouse ≥ 95 verification
 
 ---
 
@@ -85,12 +87,23 @@ real photography, font licenses, hosted deploy + true Lighthouse run.
         editorial image, back link as the whole navigation (3 SSG)
   - [x] axe 0 violations across all six checks; both form flows driven in-browser
 
+- [x] **Slice 06 — Completion**
+  - [x] `InquiryForm` — the one form island (components/form); Bespoke + Agency pages
+        refactored onto it, feature-level form islands deleted (no duplicate logic)
+  - [x] `/about` — statement, the five surfaces as a printed index, facts in mono
+  - [x] `/contact` — one letter form + per-city phone lines routing to store pages
+  - [x] `/lib/search.ts` — static index built from the same /lib data the pages render
+  - [x] `/search` — live client search, printed-index results, editorial empty state
+  - [x] `/cart` — editorial EmptyState (rail links here; checkout stays [Future])
+  - [x] axe 0 violations on all four routes; search hit/miss + refactored form flows
+        driven in-browser
+
 ---
 
 ## Next
 
-**Slice 06 — Completion** *(proposed)* — About + Contact + first Search; then deferred
-enhancements (shared-element product open, backends, photography, fonts, deploy).
+Enhancements, in rough order of leverage: shared-element product open (Motion) →
+backends (forms, bag) → photography → fonts → deploy + Lighthouse.
 **Slice 03 — Collections + Product**
 **Slice 04 — Bespoke + Store**
 **Slice 05 — Agency + Journal**
@@ -223,6 +236,19 @@ index. Frame.Agency remains the ecosystem-strip face of the surface.
 image-led; the Journal's own index is typographic (date, serif title, standfirst, hairline
 rules) so the bone world reads as paper, and the article page carries a single editorial
 image inside one uninterrupted column.
+
+**2026-07-18 — One form island.** Three near-identical client forms (bespoke, become, book)
+violated "no duplicate logic." Consolidated into `components/form/InquiryForm` driven by a
+serializable field config; pages pass their copy and fields inline, feature form islands
+deleted. Contact reused it on arrival for free.
+
+**2026-07-18 — Search is a static index, client-filtered.** Built from the same /lib data
+the pages render, so it cannot disagree with them. Adequate at this catalog size; a service
+replaces `searchEntries` without touching the UI. No spinner — results are synchronous.
+
+**2026-07-18 — /cart exists as an EmptyState.** The rail says CART (0); a 404 behind the
+shell's own link would break the house. The page is the 04_COMPONENTS editorial empty state
+(statement + one action) until checkout arrives — the route will not move.
 
 ---
 

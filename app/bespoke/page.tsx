@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Reveal } from '@/components/reveal/Reveal'
-import { AppointmentRequest } from '@/features/bespoke/AppointmentRequest'
+import { InquiryForm } from '@/components/form/InquiryForm'
+import { getStores } from '@/lib/stores'
 
 export const metadata: Metadata = {
   title: 'Bespoke',
@@ -97,7 +98,46 @@ export default function BespokePage() {
               appointment carries no obligation and no cost.
             </p>
             <div className="mt-9">
-              <AppointmentRequest />
+              <InquiryForm
+                tone="bone"
+                submitLabel="Request Bespoke"
+                confirmMessage="Thank you. The atelier will write within two working days to set a time."
+                fields={[
+                  {
+                    kind: 'text',
+                    id: 'bespoke-name',
+                    name: 'name',
+                    label: 'Name',
+                    autoComplete: 'name',
+                    requiredMessage: 'Add your name so we know who to expect.',
+                  },
+                  {
+                    kind: 'email',
+                    id: 'bespoke-email',
+                    name: 'email',
+                    label: 'Email',
+                    autoComplete: 'email',
+                    requiredMessage:
+                      'Add an email so we can confirm the appointment.',
+                  },
+                  {
+                    kind: 'select',
+                    id: 'bespoke-city',
+                    name: 'city',
+                    label: 'Preferred atelier',
+                    options: getStores().map((store) => ({
+                      value: store.slug,
+                      label: store.city,
+                    })),
+                  },
+                  {
+                    kind: 'textarea',
+                    id: 'bespoke-notes',
+                    name: 'notes',
+                    label: 'What are we making',
+                  },
+                ]}
+              />
             </div>
           </div>
         </section>

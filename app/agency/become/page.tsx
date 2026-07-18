@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { AgencyForm } from '@/features/agency/AgencyForm'
+import { InquiryForm } from '@/components/form/InquiryForm'
 
 export const metadata: Metadata = {
   title: 'Become a Model',
@@ -31,7 +31,40 @@ export default function BecomePage() {
       </header>
 
       <div className="mt-11 max-w-body">
-        <AgencyForm kind="become" />
+        <InquiryForm
+          submitLabel="Introduce Yourself"
+          confirmMessage="Thank you. The agency reviews every introduction and replies within a week, whatever the answer."
+          fields={[
+            {
+              kind: 'text',
+              id: 'agency-name',
+              name: 'name',
+              label: 'Name',
+              autoComplete: 'name',
+              requiredMessage: 'Add your name so we know who is writing.',
+            },
+            {
+              kind: 'email',
+              id: 'agency-email',
+              name: 'email',
+              label: 'Email',
+              autoComplete: 'email',
+              requiredMessage: 'Add an email so we can reply.',
+            },
+            {
+              kind: 'text',
+              id: 'agency-city',
+              name: 'city',
+              label: 'Where you are based',
+            },
+            {
+              kind: 'textarea',
+              id: 'agency-notes',
+              name: 'notes',
+              label: 'Anything we should know',
+            },
+          ]}
+        />
       </div>
     </main>
   )
