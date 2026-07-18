@@ -4,22 +4,22 @@
 > This is the only file that changes constantly. Everything else is a contract.
 
 **Updated:** 2026-07-18
-**Phase:** 1 — Build (Slices 01–04 shipped)
+**Phase:** 1 — Build (all five numbered slices shipped)
 
 ---
 
 ## Now
 
-**Slices 01–04 are built and passing.** Shell, homepage, Collections + Product, and now
-Bespoke + Store: `/bespoke` (the bone world debut — process programme + appointment form),
-`/store` (architectural index, alternating wide bands), `/store/[store]` (5 cities SSG).
-The `Field` primitive (printed-document forms) and a `Button` bone tone landed with it.
-`pnpm check` green, build succeeds (all routes < 120 kB), axe **0 WCAG 2 A/AA violations**
-on bespoke/store/store-detail (desktop + mobile); the form's error → fix → confirmation flow
-verified in-browser.
+**The numbered plan is complete.** All five slices are built and passing: Shell, Homepage,
+Collections + Product, Bespoke + Store, Agency + Journal. 37 static pages, every route
+< 120 kB, axe 0 WCAG 2 A/AA violations at every check, `pnpm check` green throughout.
 
-Immediate task: **Slice 05 — Agency + Journal.** The last numbered slice: Agency structured
-medium-high density; Journal inverts to bone for reading (docs/02 §4).
+The IA branches that remain unbuilt (all `[Future]` or unnumbered in docs/02 §1):
+About · Contact · Search · Cart/Checkout · Account/Wishlist.
+
+Proposed next: **Slice 06 — Completion** (About + Contact + a first Search), then the
+deferred enhancements: product-open shared-element transition (Motion), form/cart backends,
+real photography, font licenses, hosted deploy + true Lighthouse run.
 
 ---
 
@@ -74,12 +74,23 @@ medium-high density; Journal inverts to bone for reading (docs/02 §4).
   - [x] `/store` — architectural index, alternating full-width bands, low density
   - [x] `/store/[store]` — 5 cities SSG, printed-card practicalities (mono tabular)
   - [x] axe 0 violations on all three routes (desktop + mobile); form flow verified
+- [x] **Slice 05 — Agency + Journal**
+  - [x] `/lib/agency.ts` + `/lib/journal.ts` — React-free data (6 talent, 3 articles)
+  - [x] `/agency` — organized index: portrait tiles with mono captions below (not Frames —
+        the clinical register is the point), two IA pathways as a printed index
+  - [x] `/agency/[talent]` — comp card: portrait + mono measurement table (6 SSG)
+  - [x] `/agency/become` + `/agency/book` — one shared `AgencyForm` island, two configs
+  - [x] `/journal` — bone contents page: date, serif title, standfirst, rules — no cards
+  - [x] `/journal/[article]` — reading uninterrupted: one column at measure, single
+        editorial image, back link as the whole navigation (3 SSG)
+  - [x] axe 0 violations across all six checks; both form flows driven in-browser
 
 ---
 
 ## Next
 
-**Slice 05 — Agency + Journal** *(last numbered slice)*
+**Slice 06 — Completion** *(proposed)* — About + Contact + first Search; then deferred
+enhancements (shared-element product open, backends, photography, fonts, deploy).
 **Slice 03 — Collections + Product**
 **Slice 04 — Bespoke + Store**
 **Slice 05 — Agency + Journal**
@@ -201,6 +212,17 @@ ink pairings from 01_TOKENS §1.4. One component, two grounds — same rule as F
 (errors name the fix, per 04_COMPONENTS) and confirms via aria-live with an honest promise
 ("the atelier will write within two working days") — but nothing is transmitted yet. Wiring
 (email/CRM) is an infrastructure decision, not a UI one; the page ships without pretending.
+The same holds for AgencyForm (become/book).
+
+**2026-07-18 — Agency talent tiles are not Frames.** The Frame's anatomy (label inside the
+image, scrim, serif title) is a campaign register; the agency spec is "organized, not
+glamorous" (02 §4). Talent tiles put name/base/height in mono below the image — a comp-card
+index. Frame.Agency remains the ecosystem-strip face of the surface.
+
+**2026-07-18 — Journal index is a contents page, not a card wall.** The homepage teaser is
+image-led; the Journal's own index is typographic (date, serif title, standfirst, hairline
+rules) so the bone world reads as paper, and the article page carries a single editorial
+image inside one uninterrupted column.
 
 ---
 
