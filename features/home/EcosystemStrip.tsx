@@ -1,3 +1,4 @@
+import { imageSrc } from '@/lib/images'
 import { Frame, type FrameVariant } from '@/components/frame/Frame'
 import { Reveal } from '@/components/reveal/Reveal'
 
@@ -22,7 +23,7 @@ const FRAMES: readonly StripFrame[] = [
   {
     variant: 'collection',
     href: '/collections',
-    image: '/img/collections.svg',
+    image: imageSrc('collections'),
     alt: 'A ready-to-wear look in warm low light.',
     label: 'Collections',
     title: 'Ready to Wear',
@@ -32,7 +33,7 @@ const FRAMES: readonly StripFrame[] = [
   {
     variant: 'product',
     href: '/bespoke',
-    image: '/img/bespoke.svg',
+    image: imageSrc('bespoke'),
     alt: 'Hands at the atelier table, mid-fitting.',
     label: 'Bespoke',
     title: 'The Atelier',
@@ -42,7 +43,7 @@ const FRAMES: readonly StripFrame[] = [
   {
     variant: 'store',
     href: '/store',
-    image: '/img/store.svg',
+    image: imageSrc('store'),
     alt: 'A flagship interior, stone and shadow.',
     label: 'Store',
     title: 'Five Cities',
@@ -52,7 +53,7 @@ const FRAMES: readonly StripFrame[] = [
   {
     variant: 'agency',
     href: '/agency',
-    image: '/img/agency.svg',
+    image: imageSrc('agency'),
     alt: 'A studio portrait under even light.',
     label: 'Agency',
     title: 'The Faces',
@@ -62,7 +63,7 @@ const FRAMES: readonly StripFrame[] = [
   {
     variant: 'journal',
     href: '/journal',
-    image: '/img/journal.svg',
+    image: imageSrc('journal'),
     alt: 'An open editorial spread on a bone ground.',
     label: 'Journal',
     title: 'The Journal',

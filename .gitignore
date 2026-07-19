@@ -29,3 +29,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# photography sources (docs/07_IMAGES.md) — processed output ships, sources do not
+/photos/

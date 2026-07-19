@@ -1,3 +1,4 @@
+import { imageSrc } from './images'
 /**
  * Agency — talent data (docs/02 §1: Agency → Talent · Become a Model · Book a
  * Model). Pure data + getters, React-free. Measurements in mono-friendly
@@ -30,7 +31,7 @@ const TALENT: Talent[] = [
     shoe: 'EU 40',
     hair: 'Black',
     eyes: 'Brown',
-    image: '/img/talent-arev.svg',
+    image: imageSrc('talent-arev'),
   },
   {
     slug: 'lucine',
@@ -43,7 +44,7 @@ const TALENT: Talent[] = [
     shoe: 'EU 39',
     hair: 'Dark brown',
     eyes: 'Green',
-    image: '/img/talent-lucine.svg',
+    image: imageSrc('talent-lucine'),
   },
   {
     slug: 'nare',
@@ -56,7 +57,7 @@ const TALENT: Talent[] = [
     shoe: 'EU 41',
     hair: 'Black',
     eyes: 'Dark brown',
-    image: '/img/talent-nare.svg',
+    image: imageSrc('talent-nare'),
   },
   {
     slug: 'tigran',
@@ -69,7 +70,7 @@ const TALENT: Talent[] = [
     shoe: 'EU 44',
     hair: 'Black',
     eyes: 'Brown',
-    image: '/img/talent-tigran.svg',
+    image: imageSrc('talent-tigran'),
   },
   {
     slug: 'sona',
@@ -82,7 +83,7 @@ const TALENT: Talent[] = [
     shoe: 'EU 39',
     hair: 'Chestnut',
     eyes: 'Hazel',
-    image: '/img/talent-sona.svg',
+    image: imageSrc('talent-sona'),
   },
   {
     slug: 'vahe',
@@ -95,7 +96,7 @@ const TALENT: Talent[] = [
     shoe: 'EU 45',
     hair: 'Dark brown',
     eyes: 'Grey',
-    image: '/img/talent-vahe.svg',
+    image: imageSrc('talent-vahe'),
   },
 ]
 

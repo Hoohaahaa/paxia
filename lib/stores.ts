@@ -1,3 +1,4 @@
+import { imageSrc } from './images'
 /**
  * Stores — flagship data for Store and Store Detail (docs/02 §1). Pure data +
  * getters, React-free. Hours in mono-friendly strings; coordinates for the
@@ -27,7 +28,7 @@ const STORES: Store[] = [
     ],
     phone: '+374 10 000 000',
     line: 'The first room. Tufa stone, brass, and the atelier one floor above.',
-    image: '/img/city-yerevan.svg',
+    image: imageSrc('city-yerevan'),
     flagship: true,
   },
   {
@@ -37,7 +38,7 @@ const STORES: Store[] = [
     hours: [{ days: 'Mon – Sat', time: '10:00 – 20:00' }],
     phone: '+90 212 000 00 00',
     line: 'A gallery off the avenue, kept deliberately quiet.',
-    image: '/img/city-istanbul.svg',
+    image: imageSrc('city-istanbul'),
     flagship: false,
   },
   {
@@ -47,7 +48,7 @@ const STORES: Store[] = [
     hours: [{ days: 'Mon – Sat', time: '10:00 – 19:30' }],
     phone: '+39 02 0000 0000',
     line: 'Stone floor, one rail, north light.',
-    image: '/img/city-milan.svg',
+    image: imageSrc('city-milan'),
     flagship: false,
   },
   {
@@ -57,7 +58,7 @@ const STORES: Store[] = [
     hours: [{ days: 'Mon – Sat', time: '11:00 – 19:00' }],
     phone: '+49 30 000 000 00',
     line: 'A former print works. The presses left; the proportions stayed.',
-    image: '/img/city-berlin.svg',
+    image: imageSrc('city-berlin'),
     flagship: false,
   },
   {
@@ -67,7 +68,7 @@ const STORES: Store[] = [
     hours: [{ days: 'Mon – Sat', time: '10:30 – 20:00' }],
     phone: '+34 91 000 00 00',
     line: 'Late light, high ceilings, linen curtains that move.',
-    image: '/img/city-madrid.svg',
+    image: imageSrc('city-madrid'),
     flagship: false,
   },
 ]

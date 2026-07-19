@@ -1,3 +1,4 @@
+import { imageSrc } from '@/lib/images'
 import Image from 'next/image'
 import { TextReveal } from '@/components/reveal/TextReveal'
 
@@ -13,7 +14,7 @@ export function Campaign() {
       className="relative h-[100svh] w-full overflow-hidden"
     >
       <Image
-        src="/img/campaign.svg"
+        src={imageSrc('campaign')}
         alt="A PAXIA campaign photograph in low winter light."
         fill
         sizes="100vw"
