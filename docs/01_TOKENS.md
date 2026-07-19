@@ -50,14 +50,18 @@ Note what is absent: `#FFFFFF`. Pure white is as cheap as pure black. Our lighte
 ## 1.3 Semantic Surfaces
 
 ```
---surface-void        var(--ink-950)   page background
---surface-rail        var(--ink-900)   persistent navigation rail
---surface-raised      var(--ink-850)
---surface-frame       var(--ink-800)   editorial frame ground
---surface-inverse     var(--ink-000)   bone sections (Journal, Bespoke docs)
---surface-scrim       oklch(0.13 0.004 65 / 0.62)
---surface-scrim-soft  oklch(0.13 0.004 65 / 0.34)
+--surface-void           var(--ink-950)   page background
+--surface-rail           var(--ink-900)   persistent navigation rail
+--surface-raised         var(--ink-850)
+--surface-frame          var(--ink-800)   editorial frame ground
+--surface-inverse        var(--ink-000)   bone sections (Journal, Bespoke docs)
+--surface-inverse-hover  var(--ink-050)   hover ground for inverse-ground objects
+--surface-scrim          oklch(0.13 0.004 65 / 0.62)
+--surface-scrim-soft     oklch(0.13 0.004 65 / 0.34)
 ```
+
+Scrims are **void-based in both schemes** — they sit on photography, and the
+photography does not change with the scheme.
 
 ## 1.4 Semantic Text
 
@@ -69,6 +73,20 @@ Note what is absent: `#FFFFFF`. Pure white is as cheap as pure black. Our lighte
 --text-on-bone        var(--ink-900)
 --text-on-bone-muted  var(--ink-600)
 ```
+
+**Text over photography never follows the scheme.** Imagery is graded dark and
+scrims are void-based in both schemes, so text on images uses fixed tokens:
+
+```
+--text-on-image            var(--ink-000)   never remapped
+--text-on-image-secondary  var(--ink-200)   never remapped
+--text-on-image-muted      var(--ink-400)   never remapped
+--accent-on-image          var(--patina-500) never remapped
+```
+
+Any text inside a Frame, hero, campaign, or image band uses `--text-on-image-*`,
+not `--text-*`. This is what keeps the light scheme from ever putting dark text
+on a dark scrim.
 
 ## 1.5 Line
 
@@ -97,6 +115,16 @@ Gold is a brand asking to be seen as luxurious. Patina is a brand that has been 
 
 Budget: **< 3% of any viewport.** Used for the active state, the focus ring, and nothing else
 by default.
+
+Components never reference `--patina-*` directly. They use the scheme-aware alias:
+
+```
+--accent   var(--patina-500) on night · var(--patina-600) on day
+```
+
+Because patina-500 reads 5.06:1 on void but only 3.74:1 on bone (computed), the
+day scheme steps the accent down to patina-600 (5.21:1 on bone). The alias is
+what makes that swap a token change instead of a component hunt.
 
 ## 1.7 Functional
 
@@ -136,6 +164,46 @@ compliant floor. Every remaining ink step above 550 is safe for text at any size
 **Text over photography always requires `--surface-scrim` or a gradient scrim.**
 The reference's store strip (city names on bare imagery) fails this. Never repeat it.
 
+## 1.10 Schemes — Night and Day
+
+The house is dark-first; **night is the identity, day is a courtesy.** The day
+scheme is a remap of the *semantic* layer only — the ink ramp, the patina scale,
+the scrims, and every `--*-on-image` token are scheme-invariant. Nothing outside
+`styles/tokens.css` knows which scheme is active.
+
+Activation: `data-theme="day"` on `<html>`, set before first paint (inline
+script), persisted as `paxia-theme`. **Default is always night** — night is
+the identity; day is entered only by the visitor's explicit choice. (The
+scheme does not follow `prefers-color-scheme`: a dark house that opens its
+blinds because the OS said so surprises more than it serves.)
+
+Day remaps (all ratios computed from the hex mirrors):
+
+```
+--surface-void            var(--ink-000)
+--surface-rail            var(--ink-050)
+--surface-raised          var(--ink-100)
+--surface-frame           var(--ink-100)
+--surface-inverse         var(--ink-950)
+--surface-inverse-hover   var(--ink-850)
+--text-primary            var(--ink-900)   18.04:1 on day ground
+--text-secondary          var(--ink-700)   11.09:1
+--text-muted              var(--ink-600)    7.03:1
+--text-metadata           var(--ink-600)    7.03:1  (ink-550 reads 4.05:1 on bone — fails; stepped up)
+--text-on-bone            var(--ink-050)   17.72:1 on day inverse
+--text-on-bone-muted      var(--ink-300)    9.38:1
+--line-hairline           = --line-on-bone values
+--line-strong             ink-950 @ 0.28
+--line-on-bone            ink-000 @ 0.14   (inverse sections are dark on day)
+--accent                  var(--patina-600) 5.21:1  (patina-500 reads 3.74:1 — fails)
+--focus-ring              rebuilt from day ground + patina-600
+--lift-frame              inset ink-950 @ 0.08
+```
+
+What never remaps: the ink ramp, the patina scale, `--scrim-*`,
+`--text-on-image-*`, grain, spacing, type, motion. Day is a lighting change,
+not a redesign.
+
 ---
 
 # 2. Typography
@@ -167,12 +235,17 @@ speaking. Its uppercase tracks beautifully at small sizes, which our nav depends
 *Free fallback:* **JetBrains Mono**.
 
 ```
---font-display  'Ogg', 'Editorial New', 'Playfair Display', Georgia, serif;
---font-ui       'Söhne', 'Inter', system-ui, sans-serif;
---font-mono     'Söhne Mono', 'JetBrains Mono', monospace;
+--font-display  'Ogg', 'Editorial New', var(--font-loaded-display, 'Playfair Display'), Georgia, serif;
+--font-ui       'Söhne', var(--font-loaded-ui, 'Inter'), system-ui, sans-serif;
+--font-mono     'Söhne Mono', var(--font-loaded-mono, 'JetBrains Mono'), monospace;
 ```
 
 Two families. A third is a failure of nerve.
+
+`--font-loaded-*` is injected at runtime by `next/font` (self-hosted, subset,
+`font-display: swap`). Until the Ogg/Söhne licenses land it carries the free
+fallback; after, the licensed name ahead of it wins with no other change. This
+is the one-line swap `PROJECT_STATE.md` promised — the token file is the seam.
 
 ## 2.2 Display Scale
 
@@ -202,6 +275,10 @@ Display is always `font-weight: 400`. If a headline needs bold to work, the head
 --u-lead   1.0625rem  lh 1.60  tracking -0.004em            standfirst, hero sub
 --u-quote  1.25rem    lh 1.50  tracking -0.008em            pull quotes
 ```
+
+One tracking value lives outside this scale: `--u-wordmark-track` (0.36em),
+used **only** for the rail wordmark, so the mark reads as an identity rather
+than a nav label. Do not reach for it anywhere else.
 
 Uppercase tracking is non-negotiable. Uppercase set at default tracking is the single most
 common tell of an amateur luxury site.
@@ -284,6 +361,7 @@ horizontal top-nav can never deliver.
 ```
 --rail-w        clamp(140px, 11vw, 184px)
 --rail-w-lg     216px    ≥ --bp-2xl
+--rail-h        56px     collapsed mobile bar height (< --bp-md)
 --rail-bg       var(--surface-rail)
 --rail-edge     var(--line-hairline)   1px right edge, always
 ```
@@ -303,6 +381,7 @@ Content area = viewport − rail.
 --gutter        var(--s-5)    24px
 --margin-x      clamp(var(--s-6), 4vw, var(--s-9))
 --content-max   1680px
+--tap           44px          minimum touch target (05_QUALITY §1)
 ```
 
 Grid is structural and invisible. Never rendered.
@@ -452,7 +531,36 @@ pace, not of corners.
 
 Any text over imagery uses one. Non-negotiable — this is a contrast requirement, not a taste.
 
-## 6.4 Grain
+## 6.4 Atmosphere — the cursor light
+
+The permitted interactive atmosphere (05_QUALITY §WebGL permits: atmospheric
+depth · environmental light). A patina light field on the Arrival image drifts
+toward the cursor — the room notices the visitor, without a single particle.
+
+```
+--glow-cursor  radial-gradient(closest-side,
+                 oklch(0.60 0.070 80 / 0.16) 0%,
+                 oklch(0.60 0.070 80 / 0.05) 45%,
+                 transparent 100%)
+```
+
+Rules: Arrival only · transform-only movement, lerped · `mix-blend-mode`
+soft-light · gated to `(pointer: fine)` and no reduced motion · degrades to
+the still photograph. If a visitor can name it, it is too strong.
+
+**The seam light** — the Frame's hover response (04_COMPONENTS): the bottom
+rule draws in accent left→right, and a low light rises from it into the image:
+
+```
+--glow-edge  linear-gradient(to top,
+               oklch(0.60 0.070 80 / 0.20) 0%,
+               oklch(0.60 0.070 80 / 0.06) 40%,
+               transparent 100%)
+```
+
+Scheme-invariant (it sits on imagery). Fades by opacity only.
+
+## 6.5 Grain
 
 ```
 --grain-opacity  0.028
@@ -465,7 +573,7 @@ it kills the digital flatness of large dark fields and stops banding in gradient
 
 It must never animate. Animated grain is a film-school affectation.
 
-## 6.5 Image Treatment
+## 6.6 Image Treatment
 
 ```
 --img-ratio-portrait   3 / 4

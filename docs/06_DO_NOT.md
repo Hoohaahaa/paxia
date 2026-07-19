@@ -93,9 +93,11 @@
 - Skeleton screens.
 - An icon of a sad box in an empty state.
 
-# WebGL
+# WebGL / Atmosphere
 
-- Particles.
+- Particles. *(Evaluated 2026-07-18 against the cursor light field; the owner
+  chose the light field. The provisional exception is closed and the ban is
+  restored in full.)*
 - Decorative noise.
 - Anything a user would name.
 - Anything that cannot degrade to a still photograph.

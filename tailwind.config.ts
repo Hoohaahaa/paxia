@@ -25,15 +25,21 @@ const config: Config = {
         600: 'var(--patina-600)', 500: 'var(--patina-500)',
         400: 'var(--patina-400)', 300: 'var(--patina-300)',
       },
+      accent: 'var(--accent)',
+      'accent-image': 'var(--accent-on-image)',
       surface: {
         void: 'var(--surface-void)', rail: 'var(--surface-rail)',
         raised: 'var(--surface-raised)', frame: 'var(--surface-frame)',
         inverse: 'var(--surface-inverse)',
+        'inverse-hover': 'var(--surface-inverse-hover)',
       },
       text: {
         primary: 'var(--text-primary)', secondary: 'var(--text-secondary)',
         muted: 'var(--text-muted)', metadata: 'var(--text-metadata)',
         bone: 'var(--text-on-bone)', 'bone-muted': 'var(--text-on-bone-muted)',
+        image: 'var(--text-on-image)',
+        'image-secondary': 'var(--text-on-image-secondary)',
+        'image-muted': 'var(--text-on-image-muted)',
       },
       line: {
         hairline: 'var(--line-hairline)', strong: 'var(--line-strong)',
@@ -49,6 +55,8 @@ const config: Config = {
       13: 'var(--s-13)',
       seam: 'var(--seam)',
       rail: 'var(--rail-w)',
+      'rail-h': 'var(--rail-h)',
+      tap: 'var(--tap)',
       'sect-tight': 'var(--sect-tight)', 'sect-normal': 'var(--sect-normal)',
       'sect-wide': 'var(--sect-wide)', 'sect-hero': 'var(--sect-hero)',
     },
@@ -108,6 +116,7 @@ const config: Config = {
       backgroundImage: {
         'scrim-bottom': 'var(--scrim-bottom)',
         'scrim-rail': 'var(--scrim-rail)',
+        'glow-edge': 'var(--glow-edge)',
       },
       translate: {
         'reveal-near': 'var(--reveal-near)',

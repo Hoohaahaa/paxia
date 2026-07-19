@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* PAXIA globals — base ground, motion primitives, reveal.
+ * This file is scaffolding: it composes tokens, it never defines new values.
+ * All timing/easing/reveal numbers below are token references. */
+
+@layer base {
+  html {
+    background-color: var(--surface-void);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100dvh;
+  }
+
+  /* Focus behaves like light landing on a surface, never a browser glow. */
+  :focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--surface-void);
+  }
+}
+
+@layer utilities {
+  /* Reveal — the only entry animation (docs/03_MOTION.md).
+   * opacity 0→1 + translateY(reveal-*)→0, --t-medium --e-inout.
+   * The travel distance is set per-instance via --reveal-distance. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(var(--reveal-distance, var(--reveal-mid)));
+    transition:
+      opacity var(--t-medium) var(--e-inout),
+      transform var(--t-medium) var(--e-inout);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .reveal[data-shown='true'] {
+    opacity: 1;
+    transform: translateY(0);
+    will-change: auto;
+  }
+
+  /* Ambient drift — the sole sanctioned scale animation (docs/03_MOTION.md).
+   * 3% over 8s is below conscious detection; it stops the hero reading as a
+   * screenshot. transform-only, --e-linear, disabled under reduced motion. */
+  .ambient-drift {
+    animation: paxia-drift var(--t-ambient) var(--e-linear) infinite alternate;
+    will-change: transform;
+  }
+
+  @keyframes paxia-drift {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.03);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ambient-drift {
+      animation: none;
+    }
+  }
+}

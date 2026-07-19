@@ -78,6 +78,14 @@ trigger: IntersectionObserver, 20% visible, once
 Text `--reveal-near` · frames `--reveal-mid` · images `--reveal-far`.
 Heavier things travel further. That is the whole rule.
 
+**Display headlines may reveal as masked line-rises**: each line sits in an
+`overflow: hidden` mask and travels its own height (`translateY(100%) → 0`,
+opacity 0→1) over `--t-slow` `--e-heavy`, staggered `--reveal-stagger` between
+lines. The lines are the staggered children — a headline has at most 3–4, so
+the max-5 stagger rule holds. Words are never staggered individually; that is
+a lyric video, not a masthead. Under reduced motion the travel collapses and
+only opacity remains.
+
 No fade-up on everything. Sections earn their own choreography — a strip reveals as a
 stagger, a manifesto reveals as a single settle, a campaign reveals as a scrim lift.
 

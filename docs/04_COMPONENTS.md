@@ -47,11 +47,16 @@ A Frame behaves like a gallery mount: it isolates importance, it never decorates
 
 ```
 default   scrim-bottom @ 0.88 · --lift-frame @ 0.05
-hover     scrim → 0.82 · --lift-frame → 0.09 · rule --line-hairline → --patina-500
-          image does not move · --t-fast --e-out
-focus     --focus-ring
+hover     --lift-frame strengthens · the bottom rule draws in --accent-on-image
+          left → right (translateX in a mask, --t-normal --e-out) · --glow-edge
+          rises from the rule into the image (opacity, --t-normal --e-out)
+          image does not move
+focus     --focus-ring · same rule + glow as hover
 pressed   translateY(1px) --t-instant
 ```
+
+The hover is light landing on the seam — never movement of the image, never a
+shadow, never scale.
 
 ## Variants
 

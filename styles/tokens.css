@@ -25,6 +25,7 @@
   --surface-raised: var(--ink-850);
   --surface-frame: var(--ink-800);
   --surface-inverse: var(--ink-000);
+  --surface-inverse-hover: var(--ink-050);
   --surface-scrim: oklch(0.13 0.004 65 / 0.62);
   --surface-scrim-soft: oklch(0.13 0.004 65 / 0.34);
 
@@ -35,6 +36,12 @@
   --text-metadata: var(--ink-550);
   --text-on-bone: var(--ink-900);
   --text-on-bone-muted: var(--ink-600);
+
+  /* Over photography — scheme-invariant (01_TOKENS §1.4). */
+  --text-on-image: var(--ink-000);
+  --text-on-image-secondary: var(--ink-200);
+  --text-on-image-muted: var(--ink-400);
+  --accent-on-image: var(--patina-500);
 
   /* ─── Line ───────────────────────────────────────────────────── */
   --line-hairline: oklch(0.98 0.005 76 / 0.10);
@@ -47,6 +54,9 @@
   --patina-400: oklch(0.74 0.068 82);
   --patina-300: oklch(0.83 0.052 84);
 
+  /* Scheme-aware accent alias — components never reference --patina-* (§1.6). */
+  --accent: var(--patina-500);
+
   /* ─── Functional ─────────────────────────────────────────────── */
   --ok: oklch(0.62 0.055 150);
   --warn: oklch(0.72 0.075 75);
@@ -54,13 +64,23 @@
   --info: oklch(0.64 0.045 240);
 
   /* ─── Focus ──────────────────────────────────────────────────── */
-  --focus-ring: 0 0 0 1px var(--surface-void), 0 0 0 3px var(--patina-500);
+  --focus-ring: 0 0 0 1px var(--surface-void), 0 0 0 3px var(--accent);
   --focus-offset: 2px;
 
   /* ─── Type families ──────────────────────────────────────────── */
-  --font-display: 'Ogg', 'Editorial New', 'Playfair Display', Georgia, serif;
-  --font-ui: 'Söhne', 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'Söhne Mono', 'JetBrains Mono', ui-monospace, monospace;
+  /* --font-loaded-* is injected at runtime by next/font (see app/fonts.ts):
+   * it resolves to the self-hosted free fallback until Ogg/Söhne licenses
+   * land, at which point the licensed names ahead of it win. The --font-*-fb
+   * literal is the graceful default if the loaded var is ever absent. */
+  --font-display-fb: 'Playfair Display';
+  --font-ui-fb: 'Inter';
+  --font-mono-fb: 'JetBrains Mono';
+  --font-display: 'Ogg', 'Editorial New',
+    var(--font-loaded-display, var(--font-display-fb)), Georgia, serif;
+  --font-ui: 'Söhne', var(--font-loaded-ui, var(--font-ui-fb)), system-ui,
+    -apple-system, sans-serif;
+  --font-mono: 'Söhne Mono', var(--font-loaded-mono, var(--font-mono-fb)),
+    ui-monospace, monospace;
 
   /* ─── Display scale ──────────────────────────────────────────── */
   --d-1-size: clamp(2rem, 1.6rem + 1.6vw, 2.75rem);
@@ -108,6 +128,10 @@
   --u-quote-lh: 1.50;
   --u-quote-track: -0.008em;
 
+  /* Rail wordmark only — the one place tracking opens past the UI scale,
+   * so the mark reads as an identity, not a nav label (docs/02 §2). */
+  --u-wordmark-track: 0.36em;
+
   --measure-body: 66ch;
   --measure-lead: 52ch;
 
@@ -135,12 +159,14 @@
 
   /* ─── Layout ─────────────────────────────────────────────────── */
   --rail-w: clamp(140px, 11vw, 184px);
+  --rail-h: 56px; /* collapsed mobile bar (docs/02_LAYOUT_IA.md §2, §4.2) */
   --rail-bg: var(--surface-rail);
   --rail-edge: var(--line-hairline);
 
   --gutter: var(--s-5);
   --margin-x: clamp(var(--s-6), 4vw, var(--s-9));
   --content-max: 1680px;
+  --tap: 44px; /* minimum touch target (docs/05_QUALITY.md §1) */
 
   --strip-h: clamp(320px, 34vh, 420px);
   --strip-ratio: 3 / 4;
@@ -196,6 +222,22 @@
     oklch(0.13 0.004 65 / 0) 100%
   );
 
+  /* Cursor light field — Arrival only (01_TOKENS §6.4). */
+  --glow-cursor: radial-gradient(
+    closest-side,
+    oklch(0.6 0.07 80 / 0.16) 0%,
+    oklch(0.6 0.07 80 / 0.05) 45%,
+    transparent 100%
+  );
+
+  /* Seam light — the Frame's hover response (01_TOKENS §6.4). */
+  --glow-edge: linear-gradient(
+    to top,
+    oklch(0.6 0.07 80 / 0.2) 0%,
+    oklch(0.6 0.07 80 / 0.06) 40%,
+    transparent 100%
+  );
+
   --grain-opacity: 0.028;
   --grain-size: 180px;
 
@@ -210,6 +252,33 @@
   :root {
     --rail-w: 216px;
   }
+}
+
+/* ─── Day scheme (01_TOKENS §1.10) ─────────────────────────────────
+ * A remap of the semantic layer only. The ink ramp, patina scale, scrims,
+ * --text-on-image-*, grain, space, type, and motion never change.
+ * All ratios computed — see the doc. */
+:root[data-theme='day'] {
+  --surface-void: var(--ink-000);
+  --surface-rail: var(--ink-050);
+  --surface-raised: var(--ink-100);
+  --surface-frame: var(--ink-100);
+  --surface-inverse: var(--ink-950);
+  --surface-inverse-hover: var(--ink-850);
+
+  --text-primary: var(--ink-900);
+  --text-secondary: var(--ink-700);
+  --text-muted: var(--ink-600);
+  --text-metadata: var(--ink-600); /* ink-550 is 4.05:1 on bone — fails AA */
+  --text-on-bone: var(--ink-050);
+  --text-on-bone-muted: var(--ink-300);
+
+  --line-hairline: oklch(0.13 0.004 65 / 0.14);
+  --line-strong: oklch(0.13 0.004 65 / 0.28);
+  --line-on-bone: oklch(0.98 0.005 76 / 0.14);
+
+  --accent: var(--patina-600); /* patina-500 is 3.74:1 on bone — fails */
+  --lift-frame: inset 0 0 0 1px oklch(0.13 0.004 65 / 0.08);
 }
 
 @media (prefers-reduced-motion: reduce) {
