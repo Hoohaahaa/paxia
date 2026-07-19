@@ -1,3 +1,4 @@
+import { imageSrc } from '@/lib/images'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -42,7 +43,7 @@ export default async function ProductPage({
 
   const collection = getCollection(found.collection)
   const related = getRelatedProducts(found)
-  const hero = found.images[0] ?? '/img/collection-volume-one.svg'
+  const hero = found.images[0] ?? imageSrc('collection-volume-one')
   const detail = found.images[1] ?? hero
 
   return (

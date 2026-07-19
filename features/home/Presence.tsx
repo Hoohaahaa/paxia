@@ -1,16 +1,17 @@
 'use client'
 
 // Client: hovering/focusing a city crossfades its store image behind the band.
+import { imageSrc } from '@/lib/images'
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 const CITIES = [
-  { name: 'Yerevan', img: '/img/city-yerevan.svg' },
-  { name: 'Istanbul', img: '/img/city-istanbul.svg' },
-  { name: 'Milan', img: '/img/city-milan.svg' },
-  { name: 'Berlin', img: '/img/city-berlin.svg' },
-  { name: 'Madrid', img: '/img/city-madrid.svg' },
+  { name: 'Yerevan', img: imageSrc('city-yerevan') },
+  { name: 'Istanbul', img: imageSrc('city-istanbul') },
+  { name: 'Milan', img: imageSrc('city-milan') },
+  { name: 'Berlin', img: imageSrc('city-berlin') },
+  { name: 'Madrid', img: imageSrc('city-madrid') },
 ] as const
 
 /**

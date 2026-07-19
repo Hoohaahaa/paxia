@@ -1,3 +1,4 @@
+import { imageSrc } from '@/lib/images'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Reveal } from '@/components/reveal/Reveal'
@@ -19,7 +20,7 @@ export function Arrival() {
     >
       <div className="ambient-drift absolute inset-0">
         <Image
-          src="/img/hero.svg"
+          src={imageSrc('hero')}
           alt="A PAXIA campaign photograph, low warm light on tailored wool."
           fill
           priority

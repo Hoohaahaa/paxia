@@ -20,11 +20,18 @@ rail links there; checkout stays [Future]). 41 static pages, every route < 120 k
 (night/day theming via a semantic-layer remap in `tokens.css`, toggle in the rail, computed
 contrast, axe-clean in both schemes).
 
+**Live:** https://paxia.vercel.app (Vercel connected; CVE-2025-66478 patched via the
+bot's PR #2, verified locally before merge).
+
 Remaining work is enhancement, not structure:
-1. Form + cart backends (email/CRM, bag persistence, checkout)
-2. Real photography replacing the token-toned SVG placeholders
+1. **Real photography** — the pipeline is built (docs/07_IMAGES.md): drop sources in
+   `photos/<slot>.jpg`, run `pnpm images`, commit. The house grade, ratios, and size
+   budgets are applied automatically; slots fall back to placeholder art. What remains is
+   the photography itself — sourcing images is the owner's call (this environment cannot
+   fetch external media).
+2. Form + cart backends (email/CRM, bag persistence, checkout)
 3. Ogg/Söhne licenses (Open Decisions 1–2) + Armenian subset (Decision 4)
-4. Hosted deploy → true Lighthouse ≥ 95 verification
+4. Lighthouse ≥ 95 verification against the live deploy
 5. Vercel deploy — PR #1 is merged to main and CI guards it; the owner connects the repo
    at vercel.com/new (no config needed; Next.js auto-detected); then the true Lighthouse
    run. `metadataBase` is set to https://paxia.vercel.app — update it if the domain differs.
@@ -274,6 +281,17 @@ dark scrim.
 compared both variants and chose the cursor light field. The provisional exception in
 06_DO_NOT is closed, the particles ban is restored in full, and the particle code is
 removed (git history keeps it). `?atmosphere=off` remains as the baseline flag.
+
+**2026-07-19 — Photography pipeline over hot-linking.** The owner wants real images. This
+environment cannot fetch external media (proxy-blocked), and hot-linking unverified stock
+URLs into a live luxury site was rejected — one wrong image ID and the house loses the
+credibility the whole system exists to build. Instead: `ingest-images.mjs` + `lib/images.ts`
+(imageSrc resolution, jpg-over-svg per slot) + `docs/07_IMAGES.md` (shot list with per-slot
+art direction). The pipeline applies the house grade (darken/warm — scheme-invariant
+photography), crops to the four ratios, enforces the 05_QUALITY budgets, and fails loudly
+rather than shipping an oversized image. Proven end-to-end both directions (ingest and
+revert) with simulated sources. sharp added as a devDependency — build-time only, justified
+by the pipeline.
 
 **2026-07-18 — Placeholder art, final pass: one composition per image.** Day mode exposed
 that near-identical dark gradients read as broken tiles on bone. Every image (34) now has

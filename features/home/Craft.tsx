@@ -1,3 +1,4 @@
+import { imageSrc } from '@/lib/images'
 import Image from 'next/image'
 import { Reveal } from '@/components/reveal/Reveal'
 import { TextReveal } from '@/components/reveal/TextReveal'
@@ -15,7 +16,7 @@ export function Craft() {
         <Reveal distance="far" className="col-span-4 md:col-span-7">
           <div className="relative aspect-editorial w-full overflow-hidden bg-surface-frame">
             <Image
-              src="/img/craft.svg"
+              src={imageSrc('craft')}
               alt="Macro detail of hand-finished wool: weave, stitch, and selvedge."
               fill
               sizes="(min-width: 900px) 58vw, 100vw"

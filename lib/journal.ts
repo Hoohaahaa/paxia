@@ -1,3 +1,4 @@
+import { imageSrc } from './images'
 /**
  * Journal — articles (docs/02 §1: Journal → Article). Pure data + getters,
  * React-free. Slugs match the homepage JournalPreview links. Bodies are
@@ -22,7 +23,7 @@ const ARTICLES: Article[] = [
     date: 'March 2026',
     standfirst:
       'The room does its best work before anyone speaks. An hour in the atelier before opening.',
-    image: '/img/journal-1.svg',
+    image: imageSrc('journal-1'),
     alt: 'The atelier before opening, chairs stacked, light low.',
     body: [
       'The lights come on in threes, oldest circuit first. Whoever arrives early — usually the head cutter, occasionally no one — walks the length of the table and puts a hand flat on the wool that was left to rest overnight. Cloth relaxes when nobody is watching. So do rooms.',
@@ -36,7 +37,7 @@ const ARTICLES: Article[] = [
     date: 'February 2026',
     standfirst:
       'The woven edge carries the maker’s name and the cloth’s history. We leave it where it can be found.',
-    image: '/img/journal-2.svg',
+    image: imageSrc('journal-2'),
     alt: 'A bolt of wool half-unrolled on a cutting table.',
     body: [
       'The selvedge is the edge the loom finishes for itself — denser, straighter, signed. Most houses cut it away first, the way a printer trims a sheet. We plan the cut so it survives inside the garment: along a seam allowance, inside a hem, under a collar.',
@@ -50,7 +51,7 @@ const ARTICLES: Article[] = [
     date: 'January 2026',
     standfirst:
       'Why every PAXIA store is built as a room of the same building, and what that demands of the architecture.',
-    image: '/img/journal-3.svg',
+    image: imageSrc('journal-3'),
     alt: 'A flagship doorway at dusk, brass handle worn bright.',
     body: [
       'A brand with five stores usually has five stores. We wanted one house that happens to have doors in five cities — which is a different brief. It rules out theming. Yerevan cannot be the “stone one” and Berlin the “industrial one”; they must be the same room, translated.',

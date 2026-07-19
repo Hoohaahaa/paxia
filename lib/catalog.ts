@@ -1,3 +1,4 @@
+import { imageSrc } from './images'
 /**
  * Catalog — the Collections/Product data for Slice 03. Pure data + pure
  * getters, no React (docs/CLAUDE.md folder map: /lib is React-free). Structure
@@ -39,7 +40,7 @@ const COLLECTIONS: Collection[] = [
     season: 'Spring / Summer 2026',
     intro:
       'The first study. Cloth left to speak before cut, and cut left to speak before season. Twelve pieces, each one a sentence the next completes.',
-    cover: '/img/collection-volume-one.svg',
+    cover: imageSrc('collection-volume-one'),
   },
   {
     slug: 'winter-study',
@@ -47,7 +48,7 @@ const COLLECTIONS: Collection[] = [
     season: 'Autumn / Winter 2026',
     intro:
       'Weight as warmth, warmth as quiet. Heavier wools, longer lines, a palette drawn down to the near-dark the house is named for.',
-    cover: '/img/collection-winter-study.svg',
+    cover: imageSrc('collection-winter-study'),
   },
   {
     slug: 'stone-series',
@@ -55,7 +56,7 @@ const COLLECTIONS: Collection[] = [
     season: 'Continuous',
     intro:
       'The pieces that do not change with the season. Foundations in the material the house returns to — kept in production, refined in silence.',
-    cover: '/img/collection-stone-series.svg',
+    cover: imageSrc('collection-stone-series'),
   },
 ]
 
@@ -72,7 +73,7 @@ const PRODUCTS: Product[] = [
     care: 'Specialist dry clean. Rest on a broad hanger between wears.',
     origin: 'Cut and closed in the Yerevan atelier.',
     sizes: ['44', '46', '48', '50', '52'],
-    images: ['/img/product-coat.svg', '/img/craft.svg'],
+    images: [imageSrc('product-coat'), imageSrc('craft')],
   },
   {
     slug: 'raw-edge-knit',
@@ -86,7 +87,7 @@ const PRODUCTS: Product[] = [
     care: 'Hand wash cold. Dry flat, away from light.',
     origin: 'Knitted in Milan, finished in Yerevan.',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    images: ['/img/product-knit.svg', '/img/craft.svg'],
+    images: [imageSrc('product-knit'), imageSrc('craft')],
   },
   {
     slug: 'column-dress',
@@ -100,7 +101,7 @@ const PRODUCTS: Product[] = [
     care: 'Specialist dry clean only.',
     origin: 'Cut and closed in the Yerevan atelier.',
     sizes: ['34', '36', '38', '40', '42'],
-    images: ['/img/product-dress.svg', '/img/craft.svg'],
+    images: [imageSrc('product-dress'), imageSrc('craft')],
   },
   {
     slug: 'greatcoat',
@@ -114,7 +115,7 @@ const PRODUCTS: Product[] = [
     care: 'Specialist dry clean. Brush along the grain.',
     origin: 'Cut and closed in the Yerevan atelier.',
     sizes: ['46', '48', '50', '52', '54'],
-    images: ['/img/product-overcoat.svg', '/img/craft.svg'],
+    images: [imageSrc('product-overcoat'), imageSrc('craft')],
   },
   {
     slug: 'field-scarf',
@@ -128,7 +129,7 @@ const PRODUCTS: Product[] = [
     care: 'Dry clean. Fold, do not hang.',
     origin: 'Woven in Berlin.',
     sizes: ['One Size'],
-    images: ['/img/product-scarf.svg', '/img/craft.svg'],
+    images: [imageSrc('product-scarf'), imageSrc('craft')],
   },
   {
     slug: 'ribbed-cardigan',
@@ -142,7 +143,7 @@ const PRODUCTS: Product[] = [
     care: 'Hand wash cold. Dry flat.',
     origin: 'Knitted in Milan.',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    images: ['/img/product-cardigan.svg', '/img/craft.svg'],
+    images: [imageSrc('product-cardigan'), imageSrc('craft')],
   },
   {
     slug: 'stone-shirt',
@@ -156,7 +157,7 @@ const PRODUCTS: Product[] = [
     care: 'Machine wash cold. Iron while damp.',
     origin: 'Cut and closed in the Yerevan atelier.',
     sizes: ['36', '38', '40', '42', '44'],
-    images: ['/img/product-shirt.svg', '/img/craft.svg'],
+    images: [imageSrc('product-shirt'), imageSrc('craft')],
   },
   {
     slug: 'straight-trouser',
@@ -170,7 +171,7 @@ const PRODUCTS: Product[] = [
     care: 'Specialist dry clean.',
     origin: 'Cut and closed in the Yerevan atelier.',
     sizes: ['44', '46', '48', '50', '52'],
-    images: ['/img/product-trouser.svg', '/img/craft.svg'],
+    images: [imageSrc('product-trouser'), imageSrc('craft')],
   },
   {
     slug: 'unstructured-blazer',
@@ -184,7 +185,7 @@ const PRODUCTS: Product[] = [
     care: 'Specialist dry clean.',
     origin: 'Cut and closed in the Yerevan atelier.',
     sizes: ['44', '46', '48', '50', '52'],
-    images: ['/img/product-blazer.svg', '/img/craft.svg'],
+    images: [imageSrc('product-blazer'), imageSrc('craft')],
   },
 ]
 

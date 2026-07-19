@@ -9,7 +9,8 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "token-lint": "node token-lint.mjs",
-    "check": "tsc --noEmit && next lint && node token-lint.mjs"
+    "check": "tsc --noEmit && next lint && node token-lint.mjs",
+    "images": "node ingest-images.mjs"
   },
   "dependencies": {
     "next": "15.1.11",
@@ -24,6 +25,7 @@
     "eslint": "8.57.1",
     "eslint-config-next": "15.1.6",
     "postcss": "8.5.1",
+    "sharp": "0.33.5",
     "tailwindcss": "3.4.17",
     "typescript": "5.7.3"
   },

@@ -1,3 +1,4 @@
+import { imageSrc } from '@/lib/images'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Reveal } from '@/components/reveal/Reveal'
@@ -20,21 +21,21 @@ type Article = {
 const ARTICLES: readonly Article[] = [
   {
     href: '/journal/the-atelier-at-dawn',
-    img: '/img/journal-1.svg',
+    img: imageSrc('journal-1'),
     alt: 'The atelier before opening, chairs stacked, light low.',
     date: 'March 2026',
     title: 'The Atelier at Dawn',
   },
   {
     href: '/journal/on-keeping-the-selvedge',
-    img: '/img/journal-2.svg',
+    img: imageSrc('journal-2'),
     alt: 'A bolt of wool half-unrolled on a cutting table.',
     date: 'February 2026',
     title: 'On Keeping the Selvedge',
   },
   {
     href: '/journal/five-cities-one-house',
-    img: '/img/journal-3.svg',
+    img: imageSrc('journal-3'),
     alt: 'A flagship doorway at dusk, brass handle worn bright.',
     date: 'January 2026',
     title: 'Five Cities, One House',

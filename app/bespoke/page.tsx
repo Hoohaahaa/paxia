@@ -1,3 +1,4 @@
+import { imageSrc } from '@/lib/images'
 import { TextReveal } from '@/components/reveal/TextReveal'
 import type { Metadata } from 'next'
 import Image from 'next/image'
@@ -54,7 +55,7 @@ export default function BespokePage() {
         <Reveal distance="far" className="mt-sect-tight">
           <div className="relative aspect-editorial w-full max-w-content overflow-hidden md:aspect-campaign">
             <Image
-              src="/img/bespoke.svg"
+              src={imageSrc('bespoke')}
               alt="The atelier table — shears, chalk, a muslin in progress."
               fill
               sizes="100vw"

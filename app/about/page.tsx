@@ -1,3 +1,4 @@
+import { imageSrc } from '@/lib/images'
 import { TextReveal } from '@/components/reveal/TextReveal'
 import type { Metadata } from 'next'
 import Image from 'next/image'
@@ -70,7 +71,7 @@ export default function AboutPage() {
       <Reveal distance="far" className="mt-sect-wide">
         <div className="relative aspect-campaign w-full overflow-hidden bg-surface-frame">
           <Image
-            src="/img/craft.svg"
+            src={imageSrc('craft')}
             alt="Macro detail of hand-finished wool."
             fill
             sizes="100vw"
