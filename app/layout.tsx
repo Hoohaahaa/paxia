@@ -10,12 +10,20 @@ import { ThemeScript } from '@/components/theme/ThemeToggle'
 import { ProductOpenListener } from '@/features/product-open/ProductOpenListener'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://paxia.vercel.app'),
   title: {
     default: 'PAXIA',
     template: '%s — PAXIA',
   },
   description:
     'PAXIA — a fashion house. Ready-to-wear, bespoke atelier, flagship stores, agency, and journal, under one identity.',
+  openGraph: {
+    title: 'PAXIA',
+    description:
+      'A fashion house. Ready-to-wear, bespoke atelier, flagship stores, agency, and journal, under one identity.',
+    type: 'website',
+    siteName: 'PAXIA',
+  },
 }
 
 export const viewport: Viewport = {

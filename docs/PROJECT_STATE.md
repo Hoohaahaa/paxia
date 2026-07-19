@@ -25,8 +25,9 @@ Remaining work is enhancement, not structure:
 2. Real photography replacing the token-toned SVG placeholders
 3. Ogg/Söhne licenses (Open Decisions 1–2) + Armenian subset (Decision 4)
 4. Hosted deploy → true Lighthouse ≥ 95 verification
-5. Vercel deploy — the owner connects the repo at vercel.com/new (no config needed;
-   Next.js auto-detected); then the true Lighthouse run.
+5. Vercel deploy — PR #1 is merged to main and CI guards it; the owner connects the repo
+   at vercel.com/new (no config needed; Next.js auto-detected); then the true Lighthouse
+   run. `metadataBase` is set to https://paxia.vercel.app — update it if the domain differs.
 
 ---
 
@@ -273,6 +274,19 @@ dark scrim.
 compared both variants and chose the cursor light field. The provisional exception in
 06_DO_NOT is closed, the particles ban is restored in full, and the particle code is
 removed (git history keeps it). `?atmosphere=off` remains as the baseline flag.
+
+**2026-07-18 — Placeholder art, final pass: one composition per image.** Day mode exposed
+that near-identical dark gradients read as broken tiles on bone. Every image (34) now has
+its own editorial composition in the warm ink + patina palette, with a motif per category:
+products = drape/weave, collections = arc, cities = abstract architecture, talent =
+portrait vignette, journal = typography lines, craft = dense weave, bespoke = stitch,
+hero/campaign = sweep of light. Photography stays dark-graded in both schemes by design —
+in day mode it reads as art on a gallery wall. All still replaceable by real photography
+without touching layout.
+
+**2026-07-18 — Publishing scaffold.** CI workflow (pnpm check + build on PRs and main),
+`metadataBase` + OpenGraph metadata. PR #1 merged to main; Vercel connection is the one
+step only the owner can perform.
 
 **2026-07-18 — Night is the default, always.** The scheme no longer follows
 `prefers-color-scheme`: OS-light visitors were landing in day mode and reading it as
