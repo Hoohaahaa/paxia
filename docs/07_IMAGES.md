@@ -82,6 +82,51 @@ Studio portraits, one register, no retouch gloss:
 
 ---
 
+# Sourcing appendix — free-stock search queries per slot
+
+Until the house has its own photography, free-licensed stock (unsplash.com,
+pexels.com — both allow commercial use) can hold every slot. The pipeline
+grades whatever you pick into the house palette automatically; choose for
+composition and a single light source, not for colour.
+
+| Slot | Query |
+|---|---|
+| hero | fashion model dark studio portrait dramatic light |
+| campaign | fashion editorial night city dark coat |
+| craft | wool fabric texture macro dark |
+| bespoke | tailor atelier hands sewing dark |
+| collections | high fashion look dark editorial three quarter |
+| store | luxury boutique interior stone brass light |
+| agency | studio portrait model neutral expression dark background |
+| journal | open magazine paper typography warm light |
+| collection-volume-one | minimal fashion editorial beige dark |
+| collection-winter-study | winter coat wool fashion dark moody |
+| collection-stone-series | neutral clothing stone texture minimal |
+| product-coat | wool coat dark editorial |
+| product-knit | cashmere knit sweater texture dark |
+| product-dress | silk dress dark elegant minimal |
+| product-overcoat | heavy overcoat men fashion dark |
+| product-scarf | wool scarf folded dark |
+| product-cardigan | ribbed cardigan knitwear moody |
+| product-shirt | white shirt cotton minimal shadow |
+| product-trouser | tailored trousers wool dark |
+| product-blazer | unstructured blazer fashion dark |
+| city-yerevan | yerevan architecture tufa stone dusk |
+| city-istanbul | istanbul architecture evening moody |
+| city-milan | milan architecture dusk elegant |
+| city-berlin | berlin architecture concrete evening |
+| city-madrid | madrid architecture golden hour street |
+| journal-1 | empty workshop dawn light chairs |
+| journal-2 | fabric bolt roll wool cutting table |
+| journal-3 | old door brass handle dusk |
+| talent-* (women) | female model studio portrait dark natural |
+| talent-* (men) | male model studio portrait dark natural |
+
+Talent portraits should read as one sitting: same framing, same light, no
+retouch gloss. Cities are architecture at dusk, never postcards.
+
+---
+
 # Budgets (enforced by the pipeline)
 
 | Slot type | Max output |
